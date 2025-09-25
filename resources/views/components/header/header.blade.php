@@ -1,5 +1,5 @@
 <header id="site-header" class="bg-white border-b border-gray-500/50 relative">
-    <div id="header-inner" class="container mx-auto px-4 flex items-center justify-between h-18 relative">
+    <div id="header-inner" class="max-w-7xl mx-auto px-6 flex items-center justify-between h-18 relative">
         <!-- Логотип -->
         <x-header.partials.logo />
         <!-- Меню для десктопа -->

@@ -19,12 +19,10 @@
 <body class="min-h-screen flex flex-col overflow-x-hidden">
     @include('components.header.header')
 
-    <main class="flex-1 container mx-auto">
+    <main class="flex-1 max-w-7xl mx-auto px-6">
         @yield('content')
     </main>
     @include('components.footer.footer')
     @stack('scripts')
-
 </body>
-
 </html>

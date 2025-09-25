@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const desktopNav = header ? header.querySelector('.desktop-nav') : null;
     const servicesLink = desktopNav ? desktopNav.querySelector('a#services-link') : null;
     const chev = servicesLink ? servicesLink.querySelector('svg#chev-services') : null;
+    const dropdown = desktopNav ? desktopNav.querySelector('.services-dropdown') : null;
 
     if (!header || !desktopNav || !servicesLink) return;
 
@@ -18,14 +19,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function expand() {
-        // запрещаем открытие для мобильных (бургер)
         if (window.innerWidth < 1024) return;
-
         ensureOriginalHeight();
         clearCollapseTimer();
         header.classList.add('expanded');
-        // Множитель можно подправить под реальный выпадающий контент
-        header.style.height = (originalHeight * 2) + 'px';
+        const dropdownHeight = dropdown ? dropdown.getBoundingClientRect().height : 0;
+        header.style.height = (originalHeight + dropdownHeight + 12) + 'px';
         if (chev) chev.style.transform = 'rotate(180deg)';
         servicesLink.setAttribute('aria-expanded', 'true');
     }
@@ -50,37 +49,90 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Открывать при наведении / фокусе на "Услуги" (desktop only inside handler)
-    servicesLink.addEventListener('mouseenter', function () {
+    // open on hover/focus of services (desktop)
+    servicesLink.addEventListener('pointerenter', function () {
         if (window.innerWidth >= 1024) expand();
     });
     servicesLink.addEventListener('focus', function () {
         if (window.innerWidth >= 1024) expand();
     });
 
-    // Если пользователь наведёт на другой пункт меню — закрываем сразу
-    const otherLinks = desktopNav.querySelectorAll('a:not(#services-link)');
-    otherLinks.forEach(link => {
-        link.addEventListener('mouseenter', function () {
+    // toggle on click (desktop)
+    servicesLink.addEventListener('click', function (e) {
+        if (window.innerWidth < 1024) return;
+        e.preventDefault();
+        if (header.classList.contains('expanded')) doCollapse();
+        else expand();
+    });
+
+    // Escape closes
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && header.classList.contains('expanded')) doCollapse();
+    });
+
+    // top-level links: only direct children anchors (excluding services-link)
+    const topLevelLinks = desktopNav.querySelectorAll(':scope > a:not(#services-link)');
+
+    topLevelLinks.forEach(link => {
+        // immediate collapse when pointer enters another top-level item
+        link.addEventListener('pointerenter', function () {
             startCollapse(0);
         });
         link.addEventListener('focus', function () {
             startCollapse(0);
         });
+        link.addEventListener('click', function () {
+            doCollapse();
+        });
     });
 
-    // Пока курсор внутри header — отменяем отложенное закрытие
-    header.addEventListener('mouseenter', function () {
+    // allow free movement inside expanded header:
+    // - entering header cancels collapse timer
+    // - leaving header schedules collapse
+    header.addEventListener('pointerenter', function () {
         clearCollapseTimer();
     });
-    header.addEventListener('mouseleave', function () {
+    header.addEventListener('pointerleave', function () {
+        // pointer left header entirely -> collapse immediately
         startCollapse(0);
     });
 
-    // Клавиатурная навигация — слушаем только desktop-nav и только для desktop viewport
+    // dropdown behaviour: don't close while moving inside dropdown;
+    // close when leaving dropdown to other top-level item or outside header
+    if (dropdown) {
+        dropdown.addEventListener('pointerenter', function () {
+            clearCollapseTimer();
+        });
+        dropdown.addEventListener('pointerleave', function (e) {
+            // if pointer moved to a top-level anchor -> collapse immediately
+            const to = e.relatedTarget;
+            if (to && desktopNav.contains(to) && to.tagName === 'A' && to !== servicesLink) {
+                startCollapse(0);
+                return;
+            }
+            // otherwise schedule collapse (user may move to header other area)
+            startCollapse(0);
+        });
+
+        dropdown.querySelectorAll('a').forEach(a => {
+            a.addEventListener('pointerenter', clearCollapseTimer);
+            a.addEventListener('focus', clearCollapseTimer);
+            a.addEventListener('click', function () {
+                // click on a dropdown item should close header (navigate)
+                doCollapse();
+            });
+        });
+    }
+
+    // click outside nav closes (desktop)
+    document.addEventListener('click', function (e) {
+        if (window.innerWidth < 1024) return;
+        if (!desktopNav.contains(e.target)) startCollapse(0);
+    });
+
+    // keyboard focus handling on desktopNav
     desktopNav.addEventListener('focusin', function (e) {
         if (window.innerWidth < 1024) return;
-        // если фокус внутри desktop-nav — открываем
         if (desktopNav.contains(e.target)) expand();
     });
 
@@ -89,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!desktopNav.contains(document.activeElement)) startCollapse(0);
     });
 
-    // При ресайзе сбрасываем состояние (и предотвращаем открытие в mobile)
     window.addEventListener('resize', function () {
         originalHeight = null;
         header.style.height = '';
