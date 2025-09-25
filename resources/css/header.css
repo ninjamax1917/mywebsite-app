@@ -1,0 +1,115 @@
+.underline-anim-nav {
+    position: relative;
+    display: inline-block;
+}
+
+.underline-anim-nav::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    /* чуть дальше от текста, можно подправить */
+    height: 1px;
+    /* толщина линии для хедера (можно 1px) */
+    width: 0;
+    background: currentColor;
+    transition: width .45s ease;
+}
+
+.underline-anim-nav:hover::after {
+    width: 100%;
+}
+
+.desktop-nav a {
+    color: #1f2937;
+    /* text-gray-800 */
+    transition: color .18s ease;
+}
+
+.desktop-nav:hover a {
+    color: #868686;
+    /* text-gray-200 для всех при наведении внутри nav */
+}
+
+.desktop-nav a:hover {
+    color: #1f2937;
+    /* hovered пункт остаётся тёмным */
+}
+
+.desktop-nav a svg,
+.desktop-nav a svg path {
+    color: inherit;
+    stroke: currentColor !important;
+    fill: none;
+}
+
+/* Плавные переходы и скрытие переполнения при анимации высоты */
+#site-header {
+    transition: background-color 300ms ease, height 300ms ease;
+    overflow: hidden;
+}
+
+/* плавная ротация стрелки (если нужно) */
+#chev-services {
+    transition: transform 300ms ease;
+}
+
+/* HEADER */
+
+/* Плавный фон/высота уже есть — расширяем правила для текста, svg и логотипа */
+#site-header {
+    transition: background-color 300ms ease, height 300ms ease;
+    overflow: hidden;
+}
+
+/* состояние раскрытого header */
+#site-header.expanded {
+    background-color: #232323 !important;
+}
+
+/* меняем цвет ссылок внутри desktop-nav */
+#site-header.expanded .desktop-nav a {
+    color: #ffffff !important;
+    transition: color 300ms ease;
+}
+
+/* меняем цвет стрелки (stroke) */
+#site-header.expanded .desktop-nav svg,
+#site-header.expanded .desktop-nav svg path {
+    color: #ffffff;
+    stroke: #ffffff;
+    transition: color 300ms ease, stroke 300ms ease, transform 300ms ease;
+}
+
+/* ЛОГО: меняем цвет SVG (fill через currentColor) и текст рядом с логотипом */
+#site-header .select-none svg {
+    transition: color 300ms ease;
+}
+
+#site-header .select-none .font-montserrat,
+#site-header .select-none .text-xs,
+#site-header .select-none span {
+    transition: color 300ms ease;
+}
+
+/* при expanded делаем логотип и подписи белыми */
+#site-header.expanded .select-none svg {
+    color: #ffffff !important;
+    /* влияет на fill="currentColor" */
+}
+
+#site-header.expanded .select-none .font-montserrat,
+#site-header.expanded .select-none .text-xs,
+#site-header.expanded .select-none span {
+    color: #ffffff !important;
+}
+
+#site-header.expanded .desktop-nav a#services-link::after {
+    width: 100% !important;
+}
+
+/* опционально, чтобы цвет текста тоже менялся согласовано */
+#site-header.expanded .desktop-nav a#services-link {
+    color: inherit;
+    /* или #fff если нужно */
+}

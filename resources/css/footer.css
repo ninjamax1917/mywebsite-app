@@ -1,0 +1,20 @@
+.underline-anim {
+    position: relative;
+    display: inline-block;
+}
+
+.underline-anim::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    /* отступ линии от текста, увеличьте/уменьшите при необходимости */
+    height: 1px;
+    width: 0;
+    background: currentColor;
+    transition: width .45s ease;
+}
+
+.underline-anim:hover::after {
+    width: 100%;
+}

@@ -16,13 +16,13 @@
     @vite('resources/js/app.js')
 </head>
 
-<body>
+<body class="min-h-screen flex flex-col overflow-x-hidden">
     @include('components.header.header')
 
-    <div class="container mx-auto">
+    <main class="flex-1 container mx-auto">
         @yield('content')
-    </div>
-    {{-- @include('components.footer') --}}
+    </main>
+    @include('components.footer.footer')
     @stack('scripts')
 
 </body>

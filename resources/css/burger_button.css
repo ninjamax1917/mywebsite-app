@@ -1,0 +1,11 @@
+ #mobile-menu-btn.open #bar1 {
+     transform: translateY(8px) rotate(-45deg);
+ }
+
+ #mobile-menu-btn.open #bar2 {
+     opacity: 0;
+ }
+
+ #mobile-menu-btn.open #bar3 {
+     transform: translateY(-8px) rotate(45deg);
+ }
