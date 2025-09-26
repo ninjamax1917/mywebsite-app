@@ -1,4 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+    <div x-data="{ showBackTop: false, threshold: 0 }" x-init="threshold = $refs.firstSection ? $refs.firstSection.offsetHeight : 500" @scroll.window="showBackTop = window.scrollY > threshold">
+        <div class="py-16" x-ref="firstSection">
+            <section>
+                <x-home_partials.section_main />
+            </section>
+        </div>
+
+
+
+
+    </div>
 @endsection

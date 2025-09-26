@@ -23,8 +23,12 @@ document.addEventListener('DOMContentLoaded', function () {
         ensureOriginalHeight();
         clearCollapseTimer();
         header.classList.add('expanded');
-        const dropdownHeight = dropdown ? dropdown.getBoundingClientRect().height : 0;
-        header.style.height = (originalHeight + dropdownHeight + 12) + 'px';
+
+        const finalHeight = Math.round(originalHeight * 2.3);
+        requestAnimationFrame(() => {
+            header.style.height = finalHeight + 'px';
+        });
+
         if (chev) chev.style.transform = 'rotate(180deg)';
         servicesLink.setAttribute('aria-expanded', 'true');
     }
@@ -32,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function doCollapse() {
         if (originalHeight === null) return;
         header.classList.remove('expanded');
+        header.classList.remove('dropdown-link-hover');
         header.style.height = originalHeight + 'px';
         if (chev) chev.style.transform = '';
         servicesLink.setAttribute('aria-expanded', 'false');
@@ -74,49 +79,74 @@ document.addEventListener('DOMContentLoaded', function () {
     const topLevelLinks = desktopNav.querySelectorAll(':scope > a:not(#services-link)');
 
     topLevelLinks.forEach(link => {
-        // immediate collapse when pointer enters another top-level item
+        // при наведении или фокусе на одном из разделов — закрываем header
         link.addEventListener('pointerenter', function () {
-            startCollapse(0);
+            if (window.innerWidth >= 1024 && header.classList.contains('expanded')) {
+                startCollapse(0);
+            }
         });
         link.addEventListener('focus', function () {
-            startCollapse(0);
+            if (window.innerWidth >= 1024 && header.classList.contains('expanded')) {
+                startCollapse(0);
+            }
         });
+        // клик по разделу — немедленно закрыть (навигация)
         link.addEventListener('click', function () {
             doCollapse();
         });
     });
 
     // allow free movement inside expanded header:
-    // - entering header cancels collapse timer
-    // - leaving header schedules collapse
     header.addEventListener('pointerenter', function () {
         clearCollapseTimer();
     });
     header.addEventListener('pointerleave', function () {
-        // pointer left header entirely -> collapse immediately
         startCollapse(0);
     });
 
-    // dropdown behaviour: don't close while moving inside dropdown;
-    // close when leaving dropdown to other top-level item or outside header
+    // dropdown behaviour: добавляем/убираем подсветку остальных элементов при hover/focus подпункта
     if (dropdown) {
         dropdown.addEventListener('pointerenter', function () {
             clearCollapseTimer();
         });
         dropdown.addEventListener('pointerleave', function (e) {
-            // if pointer moved to a top-level anchor -> collapse immediately
             const to = e.relatedTarget;
-            if (to && desktopNav.contains(to) && to.tagName === 'A' && to !== servicesLink) {
-                startCollapse(0);
+            if (to && header.contains(to)) {
                 return;
             }
-            // otherwise schedule collapse (user may move to header other area)
+            // ушли из dropdown за пределы header -> убрать эффект
+            header.classList.remove('dropdown-link-hover');
             startCollapse(0);
         });
 
         dropdown.querySelectorAll('a').forEach(a => {
-            a.addEventListener('pointerenter', clearCollapseTimer);
-            a.addEventListener('focus', clearCollapseTimer);
+            // при наведении на подпункт — затемняем все остальные
+            a.addEventListener('pointerenter', function () {
+                if (!(window.innerWidth >= 1024 && header.classList.contains('expanded'))) return;
+                header.classList.add('dropdown-link-hover');
+            });
+            a.addEventListener('focus', function () {
+                if (!(window.innerWidth >= 1024 && header.classList.contains('expanded'))) return;
+                header.classList.add('dropdown-link-hover');
+            });
+
+            // если указатель ушёл к другому элементу внутри dropdown — не убирать класс
+            a.addEventListener('pointerleave', function (e) {
+                const to = e.relatedTarget;
+                if (to && dropdown.contains(to)) return;
+                // если ушли из dropdown полностью — убрать класс
+                if (!(to && header.contains(to))) {
+                    header.classList.remove('dropdown-link-hover');
+                }
+            });
+
+            a.addEventListener('blur', function () {
+                // если фокус не внутри dropdown -> убрать класс
+                if (!dropdown.contains(document.activeElement)) {
+                    header.classList.remove('dropdown-link-hover');
+                }
+            });
+
             a.addEventListener('click', function () {
                 // click on a dropdown item should close header (navigate)
                 doCollapse();
@@ -127,7 +157,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // click outside nav closes (desktop)
     document.addEventListener('click', function (e) {
         if (window.innerWidth < 1024) return;
-        if (!desktopNav.contains(e.target)) startCollapse(0);
+        if (!desktopNav.contains(e.target)) {
+            header.classList.remove('dropdown-link-hover');
+            startCollapse(0);
+        }
     });
 
     // keyboard focus handling on desktopNav
@@ -138,13 +171,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     desktopNav.addEventListener('focusout', function () {
         if (window.innerWidth < 1024) return;
-        if (!desktopNav.contains(document.activeElement)) startCollapse(0);
+        if (!desktopNav.contains(document.activeElement)) {
+            header.classList.remove('dropdown-link-hover');
+            startCollapse(0);
+        }
     });
 
     window.addEventListener('resize', function () {
         originalHeight = null;
         header.style.height = '';
         header.classList.remove('expanded');
+        header.classList.remove('dropdown-link-hover');
         clearCollapseTimer();
         if (chev) chev.style.transform = '';
         servicesLink.setAttribute('aria-expanded', 'false');

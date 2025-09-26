@@ -1,4 +1,4 @@
-/* Позиционирование underline-анимации для пунктов меню */
+/* Общие стили underline-анимации */
 .underline-anim-nav {
     position: relative;
     display: inline-block;
@@ -9,9 +9,7 @@
     position: absolute;
     left: 0;
     bottom: -1px;
-    /* чуть дальше от текста, можно подправить */
     height: 1px;
-    /* толщина линии для хедера (можно 1px) */
     width: 0;
     background: currentColor;
     transition: width .45s ease;
@@ -21,7 +19,7 @@
     width: 100%;
 }
 
-/* Стили ссылок в desktop nav */
+/* Desktop nav links */
 .desktop-nav a {
     color: #1f2937;
     /* text-gray-800 */
@@ -30,15 +28,13 @@
 
 .desktop-nav:hover a {
     color: #868686;
-    /* text-gray-200 для всех при наведении внутри nav */
 }
 
 .desktop-nav a:hover {
     color: #1f2937;
-    /* hovered пункт остаётся тёмным */
 }
 
-/* SVG внутри ссылок наследует цвет/stroke */
+/* SVG внутри ссылок наследует stroke/currentColor */
 .desktop-nav a svg,
 .desktop-nav a svg path {
     color: inherit;
@@ -46,35 +42,29 @@
     fill: none;
 }
 
-/* Плавные переходы и скрытие переполнения при анимации высоты */
+/* Header — плавные переходы и скрытие overflow при анимации высоты */
 #site-header {
     transition: background-color 300ms ease, height 300ms ease;
     overflow: hidden;
 }
 
-/* плавная ротация стрелки (если нужно) */
+/* Плавная ротация стрелки */
 #chev-services {
     transition: transform 300ms ease;
 }
 
-/* HEADER — дополнительные правила для текста, svg и логотипа */
-#site-header {
-    transition: background-color 300ms ease, height 300ms ease;
-    overflow: hidden;
-}
-
-/* состояние раскрытого header */
+/* Состояние раскрытого header */
 #site-header.expanded {
     background-color: #232323 !important;
 }
 
-/* меняем цвет ссылок внутри desktop-nav при expanded */
+/* Изменяем цвет ссылок при expanded */
 #site-header.expanded .desktop-nav a {
     color: #ffffff !important;
     transition: color 300ms ease;
 }
 
-/* меняем цвет стрелки (stroke) в expanded */
+/* Изменяем цвет стрелки/иконок при expanded */
 #site-header.expanded .desktop-nav svg,
 #site-header.expanded .desktop-nav svg path {
     color: #ffffff;
@@ -82,7 +72,7 @@
     transition: color 300ms ease, stroke 300ms ease, transform 300ms ease;
 }
 
-/* ЛОГО: меняем цвет SVG (fill через currentColor) и текст рядом с логотипом */
+/* Лого / текст рядом с логотипом */
 #site-header .select-none svg {
     transition: color 300ms ease;
 }
@@ -93,174 +83,30 @@
     transition: color 300ms ease;
 }
 
-/* при expanded делаем логотип и подписи белыми */
-#site-header.expanded .select-none svg {
-    color: #ffffff !important;
-    /* влияет на fill="currentColor" */
-}
-
+#site-header.expanded .select-none svg,
 #site-header.expanded .select-none .font-montserrat,
 #site-header.expanded .select-none .text-xs,
 #site-header.expanded .select-none span {
     color: #ffffff !important;
 }
 
-/* подсветка underline для services-link при expanded */
+/* Подсветка underline для services-link при expanded */
 #site-header.expanded .desktop-nav a#services-link::after {
     width: 100% !important;
 }
 
-/* опционально, чтобы цвет текста для services-link тоже менялся согласовано */
 #site-header.expanded .desktop-nav a#services-link {
     color: inherit;
-    /* или #fff если нужно */
-}
-
-/* Когда header открыт — показываем dropdown */
-#site-header.expanded .services-dropdown {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(6px);
-}
-
-/* Ссылки внутри dropdown наследуют поведение underline-anim-nav */
-.services-dropdown a {
-    color: inherit;
-    text-decoration: none;
-}
-
-/* Если нужно — можно подправить фон/отступы для тёмного состояния */
-#site-header.expanded .services-dropdown {
-    /* background: rgba(255,255,255,0.03);  */
-    /* опционально */
-}
-
-/* Позиционирование underline-анимации для пунктов меню */
-.underline-anim-nav {
-    position: relative;
-    display: inline-block;
-}
-
-.underline-anim-nav::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    /* чуть дальше от текста, можно подправить */
-    height: 1px;
-    /* толщина линии для хедера (можно 1px) */
-    width: 0;
-    background: currentColor;
-    transition: width .45s ease;
-}
-
-.underline-anim-nav:hover::after {
-    width: 100%;
-}
-
-/* Стили ссылок в desktop nav */
-.desktop-nav a {
-    color: #1f2937;
-    /* text-gray-800 */
-    transition: color .18s ease;
-}
-
-.desktop-nav:hover a {
-    color: #868686;
-    /* text-gray-200 для всех при наведении внутри nav */
-}
-
-.desktop-nav a:hover {
-    color: #1f2937;
-    /* hovered пункт остаётся тёмным */
-}
-
-/* SVG внутри ссылок наследует цвет/stroke */
-.desktop-nav a svg,
-.desktop-nav a svg path {
-    color: inherit;
-    stroke: currentColor !important;
-    fill: none;
-}
-
-/* Плавные переходы и скрытие переполнения при анимации высоты */
-#site-header {
-    transition: background-color 300ms ease, height 300ms ease;
-    overflow: hidden;
-}
-
-/* плавная ротация стрелки (если нужно) */
-#chev-services {
-    transition: transform 300ms ease;
-}
-
-/* HEADER — дополнительные правила для текста, svg и логотипа */
-#site-header {
-    transition: background-color 300ms ease, height 300ms ease;
-    overflow: hidden;
-}
-
-/* состояние раскрытого header */
-#site-header.expanded {
-    background-color: #232323 !important;
-}
-
-/* меняем цвет ссылок внутри desktop-nav при expanded */
-#site-header.expanded .desktop-nav a {
-    color: #ffffff !important;
-    transition: color 300ms ease;
-}
-
-/* меняем цвет стрелки (stroke) в expanded */
-#site-header.expanded .desktop-nav svg,
-#site-header.expanded .desktop-nav svg path {
-    color: #ffffff;
-    stroke: #ffffff;
-    transition: color 300ms ease, stroke 300ms ease, transform 300ms ease;
-}
-
-/* ЛОГО: меняем цвет SVG (fill через currentColor) и текст рядом с логотипом */
-#site-header .select-none svg {
-    transition: color 300ms ease;
-}
-
-#site-header .select-none .font-montserrat,
-#site-header .select-none .text-xs,
-#site-header .select-none span {
-    transition: color 300ms ease;
-}
-
-/* при expanded делаем логотип и подписи белыми */
-#site-header.expanded .select-none svg {
-    color: #ffffff !important;
-    /* влияет на fill="currentColor" */
-}
-
-#site-header.expanded .select-none .font-montserrat,
-#site-header.expanded .select-none .text-xs,
-#site-header.expanded .select-none span {
-    color: #ffffff !important;
-}
-
-/* подсветка underline для services-link при expanded */
-#site-header.expanded .desktop-nav a#services-link::after {
-    width: 100% !important;
-}
-
-/* опционально, чтобы цвет текста для services-link тоже менялся согласовано */
-#site-header.expanded .desktop-nav a#services-link {
-    color: inherit;
-    /* или #fff если нужно */
 }
 
 /* Выпадающий список услуг (горизонтально) */
 .services-dropdown {
     position: absolute;
-    top: calc(100% + 8px);
+    top: calc(100% + 30px);
     left: 50%;
     transform: translateX(-50%) translateY(0);
     display: flex;
-    gap: 1.25rem;
+    gap: 3.8rem;
     padding: 0.5rem 0.75rem;
     opacity: 0;
     pointer-events: none;
@@ -269,15 +115,74 @@
     z-index: 40;
 }
 
-/* Когда header открыт — показываем dropdown */
+/* Показываем dropdown при expanded */
 #site-header.expanded .services-dropdown {
     opacity: 1;
     pointer-events: auto;
     transform: translateX(-50%) translateY(6px);
 }
 
-/* Ссылки внутри dropdown наследуют поведение underline-anim-nav */
+/* Ссылки внутри dropdown */
 .services-dropdown a {
     color: inherit;
     text-decoration: none;
+    transition: color .18s ease;
+}
+
+/* Поведение при hover на подпункте: затемнить все остальные пункты,
+   но не затрагивать сам hovered подпункт и не затемнять «Услуги» (#services-link).
+   Класс .dropdown-link-hover добавляется JS. */
+#site-header.expanded.dropdown-link-hover .desktop-nav>a:not(#services-link) {
+    color: #8c8d8d !important;
+    /* затемнённый цвет для остальных top-level */
+}
+
+#site-header.expanded.dropdown-link-hover .services-dropdown a {
+    color: #8c8d8d !important;
+    /* затемняем все подпункты */
+}
+
+/* hovered/focused подпункт остаётся белым */
+#site-header.expanded.dropdown-link-hover .services-dropdown a:hover,
+#site-header.expanded.dropdown-link-hover .services-dropdown a:focus {
+    color: #ffffff !important;
+}
+
+/* Гарантируем, что сам #services-link остаётся светлым при hover на подпункте */
+#site-header.expanded.dropdown-link-hover .desktop-nav>a#services-link {
+    color: #ffffff !important;
+}
+
+/* Небольшие корректировки: мобильная/адаптивность */
+@media (max-width: 1023px) {
+    .desktop-nav {
+        display: none !important;
+    }
+}
+
+/* Специальное подчеркивание только для текста "Услуги" */
+#services-link::after {
+    display: none;
+}
+
+#services-link .underline-target {
+    position: relative;
+    display: inline-block;
+}
+
+#services-link .underline-target::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 1px;
+    width: 0;
+    background: currentColor;
+    transition: width .45s ease;
+}
+
+#services-link:hover .underline-target::after,
+#services-link:focus .underline-target::after,
+#site-header.expanded .desktop-nav a#services-link .underline-target::after {
+    width: 100%;
 }
