@@ -1,39 +1,84 @@
 <main>
-    <div class="max-w-7xl mx-auto px-6 py-20 flex flex-col-reverse md:flex-row items-center gap-10">
-        <!-- Текстовая часть -->
-        <div class="w-full md:w-7/12">
+    <div class="max-w-[1440px] mx-auto py-0">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center md:items-start">
+            <!-- Текст -->
+            <div class="md:col-span-7">
+                <h1 class="text-4xl sm:text-4xl md:text-7xl font-extrabold leading-tight text-gray-900 mb-4 hero-title">
+                    <span
+                        class="block text-gray-900 transform -translate-y-6 opacity-0 transition-all duration-700 ease-out">Проектируем,
+                    </span>
+                    <span
+                        class="block text-gray-900 transform -translate-y-6 opacity-0 transition-all duration-700 ease-out">монтируем&nbsp;и</span>
+                    <span
+                        class="block text-gray-900 transform -translate-y-6 opacity-0 transition-all duration-700 ease-out">сопровождаем</span>
+                    <span
+                        class="block text-blue-600 transform -translate-y-6 opacity-0 transition-all duration-700 ease-out">инженерные</span>
+                    <span
+                        class="block text-blue-600 transform -translate-y-6 opacity-0 transition-all duration-700 ease-out">системы</span>
+                </h1>
 
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-gray-900 mb-4">
-                <span>Проектируем, монтируем и сопровождаем</span>
-                <span class="block text-blue-600">инженерные системы</span>
-            </h1>
+                <h2 class="text-2xs font-semibold md:text-xl text-gray-600 mb-4">
+                    в городе Приморско-Ахтарск и по всему Краснодарскому краю
+                </h2>
 
-            <h2 class="text-lg md:text-xl text-gray-700 mb-4">
-                В Приморско-Ахтарске и по всему Краснодарскому краю
-            </h2>
+                <p class="text-sm text-gray-600 mb-6">
+                    Производство работ по проектированию, монтажу и обслуживанию электроснабжения, электрооборудования,
+                    проивопожарной автоматики, охранных систем, видеонаблюдения, СКУД, домофонии, вентиляции и
+                    кондиционирования.
+                </p>
 
-            <p class="text-sm text-gray-600 mb-6">Быстрый расчёт проекта по телефону или через заявку — ответ в течение
-                рабочего дня.</p>
+                <div class="flex flex-wrap gap-3 items-center">
+                    <a href="tel:+79282547147"
+                        class="inline-flex items-center justify-center px-5 py-3 bg-blue-600 text-white text-md font-semibold rounded-4xl hover:rounded-none transition-all duration-300 shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        aria-label="Позвонить для расчета проекта">Рассчитать проект</a>
+                </div>
 
-            <div class="flex flex-wrap gap-3">
-                <!-- CTA: звонок -->
-                <a href="tel:+79282547147"
-                    class="inline-flex items-center justify-center px-5 py-3 bg-blue-600 text-white text-md font-semibold rounded-4xl hover:rounded-none transition-all duration-300 shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    aria-label="Позвонить для расчета проекта">Рассчитать проект</a>
-
-
+                <!-- доверие / быстрые факты -->
+                <div class="mt-8 flex flex-wrap gap-6 text-sm text-gray-600">
+                    <div class="flex items-center gap-3">
+                        <strong class="text-gray-900"><span class="js-counter" data-target="20"
+                                data-duration="1400">0</span>+</strong>
+                        <span>лет опыта</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <strong class="text-gray-900"><span class="js-counter" data-target="500"
+                                data-duration="1400">0</span>+</strong>
+                        <span>реализованных объектов</span>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- Иллюстрация / картинка -->
-        <div class="w-full md:w-5/12 flex justify-center">
-            <div class="w-full max-w-md">
-                <picture>
-                    <source type="image/webp" srcset="/images/hero-engineering.webp" />
-                    <img src="/images/hero-engineering.jpg" alt="Специалисты выполняют монтаж инженерных систем"
-                        class="w-full h-auto rounded-md shadow-md object-cover" loading="lazy" width="720"
-                        height="480">
-                </picture>
+            <!-- Карусель фото справа -->
+            <div class="md:col-span-12 lg:col-span-5 flex justify-center lg:justify-end md:mt-6">
+                <div
+                    class="relative w-full max-w-md sm:max-w-lg md:max-w-full lg:max-w-full h-116 md:h-[44rem] lg:h-[44rem] rounded-lg overflow-hidden shadow-lg bg-gray-100 mx-auto">
+                    <!-- Градиент (для контраста) -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none">
+                    </div>
+
+                    <div class="hero-carousel relative w-full h-full">
+                        <img src="{{ asset('images/icons/hero_section_main/видеонаблюдение.jpg') }}"
+                            alt="видеонаблюдение"
+                            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-100"
+                            aria-hidden="false">
+                        <img src="{{ asset('images/icons/hero_section_main/интернет.jpg') }}" alt="интернет"
+                            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0"
+                            aria-hidden="true">
+                        <img src="{{ asset('images/icons/hero_section_main/камера.jpg') }}" alt="камера"
+                            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0"
+                            aria-hidden="true">
+                        <img src="{{ asset('images/icons/hero_section_main/лаборатория.jpeg') }}" alt="лаборатория"
+                            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0"
+                            aria-hidden="true">
+                        <img src="{{ asset('images/icons/hero_section_main/сервер.jpg') }}" alt="сервер"
+                            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0"
+                            aria-hidden="true">
+                        <img src="{{ asset('images/icons/hero_section_main/электрика.jpg') }}" alt="электрика"
+                            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0"
+                            aria-hidden="true">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
