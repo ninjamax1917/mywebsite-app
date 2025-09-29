@@ -1,4 +1,5 @@
-<div class="select-none flex flex-row items-center min-w-0 h-full">
+<div
+    class="select-none flex flex-row items-center min-w-0 h-full site-logo opacity-0 -translate-y-1 transition-transform transition-opacity duration-300">
     <a href="/" class="flex items-center justify-center h-full">
         <svg class="w-14 h-14 text-[#1E2939]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 298.02 301.00">
             <path fill="currentColor" stroke="none" fill-opacity="1" stroke-width="1" stroke-opacity="1"
@@ -15,4 +16,4 @@
             | Security
         </span>
     </a>
-</div>  
+</div>

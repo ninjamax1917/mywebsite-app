@@ -4,5 +4,6 @@ import './mobile_menu';
 import './header';
 import './counter_main';
 import './main_hero_home';
+import './section_services';
 
 

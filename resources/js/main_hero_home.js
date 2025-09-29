@@ -1,74 +1,40 @@
+import { initReveal } from './reveal.js';
+
 document.addEventListener('DOMContentLoaded', function () {
+    // reveal for hero area (lines, subtitle, cards)
+    initReveal([
+        { selector: '.hero-title', type: 'stagger-lines', delayBetween: 180 },
+        { selector: '.hero-sub', type: 'slide-up', delay: 80 },
+        { selector: '.hero-card', type: 'slide-in-x', delay: 80 }
+    ], { threshold: 0.2 });
 
-    // Анимация заголовка: поочередное плавное появление сверху вниз
-    (function animateHeroTitle() {
-        const lines = document.querySelectorAll('.hero-title span');
-        if (!lines.length) return;
-        const delayBetween = 180; // ms между строками
-        lines.forEach((el, i) => {
-            // на всякий случай установим начальное состояние, если его нет
-            el.classList.add('-translate-y-6', 'opacity-0');
-            el.style.willChange = 'transform, opacity';
-            setTimeout(() => {
-                el.classList.remove('-translate-y-6', 'opacity-0');
-                el.classList.add('translate-y-0', 'opacity-100');
-            }, i * delayBetween);
-        });
-    })();
+    // reveal for "Наши услуги" section:
+    // heading slides from left, paragraph next, cards appear sequentially
+    initReveal([
+        { selector: '#services-heading', type: 'slide-in-x', delay: 0 },
+        { selector: '#services-heading + p', type: 'slide-in-x', delay: 120 },
+        // keep container stagger-children but increase delayBetween so on mobile items don't fire simultaneously
+        { selector: '.services-grid', type: 'stagger-children', delay: 240, delayBetween: 180 }
+    ], { threshold: 0.12 });
 
-    // Карусель изображений
+    // simple hero image carousel (existing behavior)
     const imgs = document.querySelectorAll('.hero-carousel img');
     if (!imgs.length) return;
     let current = 0;
     const intervalMs = 3000;
 
-    // гарантируем начальное состояние
     imgs.forEach((img, i) => {
         img.style.willChange = 'opacity';
-        img.setAttribute('aria-hidden', i === current ? 'false' : 'true');
-
-        // fallback: гарантируем абсолютное позиционирование и cover
-        if (getComputedStyle(img).position === 'static') {
-            img.style.position = 'absolute';
-            img.style.inset = '0';
-            img.style.width = '100%';
-            img.style.height = '100%';
-            img.style.objectFit = 'cover';
-        }
-
-        // явные inline-стили для z-index и opacity (фолбек, если классы не применяются)
-        img.style.zIndex = i === current ? '2' : '1';
+        img.style.transition = 'opacity 600ms ease';
         img.style.opacity = i === current ? '1' : '0';
-
-        // поддерживаем Tailwind-классы
-        if (i === current) {
-            img.classList.add('opacity-100');
-            img.classList.remove('opacity-0');
-        } else {
-            img.classList.add('opacity-0');
-            img.classList.remove('opacity-100');
-        }
+        img.setAttribute('aria-hidden', i === current ? 'false' : 'true');
     });
 
     setInterval(() => {
-        const next = (current + 1) % imgs.length;
-
-        // скрываем текущий
-        imgs[current].classList.remove('opacity-100');
-        imgs[current].classList.add('opacity-0');
-        imgs[current].setAttribute('aria-hidden', 'true');
         imgs[current].style.opacity = '0';
-        imgs[current].style.zIndex = '1';
-
-        // показываем следующий
-        imgs[next].classList.remove('opacity-0');
-        imgs[next].classList.add('opacity-100');
-        imgs[next].setAttribute('aria-hidden', 'false');
-        imgs[next].style.opacity = '1';
-        imgs[next].style.zIndex = '2';
-
-        current = next;
+        imgs[current].setAttribute('aria-hidden', 'true');
+        current = (current + 1) % imgs.length;
+        imgs[current].style.opacity = '1';
+        imgs[current].setAttribute('aria-hidden', 'false');
     }, intervalMs);
 });
-
-

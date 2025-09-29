@@ -18,8 +18,12 @@
             <ul id="services-submenu" class="hidden mt-2 pl-4 space-y-2">
                 <li>
                     <a href="#"
-                        class="block text-lg py-1 text-gray-200 hover:text-[#0077FF] transition duration-200">Видеонаблюдение
-                        и безопасность</a>
+                        class="block text-lg py-1 text-gray-200 hover:text-[#0077FF] transition duration-200">Видеонаблюдение</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="block text-lg py-1 text-gray-200 hover:text-[#0077FF] transition duration-200">Пожарная
+                        автоматика</a>
                 </li>
                 <li>
                     <a href="#"
@@ -27,8 +31,7 @@
                 </li>
                 <li>
                     <a href="#"
-                        class="block text-lg py-1 text-gray-200 hover:text-[#0077FF] transition duration-200">Противопожарная
-                        автоматика</a>
+                        class="block text-lg py-1 text-gray-200 hover:text-[#0077FF] transition duration-200">Безопасность</a>
                 </li>
                 <li>
                     <a href="#"
