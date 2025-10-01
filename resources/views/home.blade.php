@@ -8,6 +8,7 @@
             <section>
                 <x-home_partials.section_main />
                 <x-home_partials.section_services />
+                <x-home_partials.section_work />
             </section>
         </div>
     </div>

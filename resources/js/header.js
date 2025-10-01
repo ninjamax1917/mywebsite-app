@@ -82,23 +82,35 @@ document.addEventListener('DOMContentLoaded', function () {
         headerIcons.style.visibility = 'visible';
         const items = Array.from(headerIcons.children);
 
-        items.forEach(it => {
-            it.style.pointerEvents = 'none';
-            it.style.opacity = '0';
-        });
-
+        // Раньше мы режем всем opacity=0 перед анимацией — это и вызывает мигание.
+        // Сейчас: анимируем только те элементы, которые реально скрыты (opacity <= 0.5).
         items.forEach((it, i) => {
+            const computed = parseFloat(window.getComputedStyle(it).opacity || '0');
             const delay = stagger ? i * ICON_STAGGER : 0;
-            const id = setTimeout(() => {
+
+            if (computed > 0.5) {
+                // уже видимы — просто убедиться, что pointerEvents включены и положение корректно
                 it.style.opacity = '1';
+                it.style.pointerEvents = '';
                 if (it.classList.contains('translate-y-4')) {
                     it.classList.remove('translate-y-4');
                     it.classList.add('translate-y-0');
                 }
-                const reenable = setTimeout(() => { it.style.pointerEvents = ''; }, ICON_TRANS_MS);
-                showTimers.push(reenable);
-            }, delay);
-            showTimers.push(id);
+            } else {
+                // для скрытых элементов — запустить анимацию появления
+                it.style.pointerEvents = 'none';
+                it.style.opacity = '0';
+                const id = setTimeout(() => {
+                    it.style.opacity = '1';
+                    if (it.classList.contains('translate-y-4')) {
+                        it.classList.remove('translate-y-4');
+                        it.classList.add('translate-y-0');
+                    }
+                    const reenable = setTimeout(() => { it.style.pointerEvents = ''; }, ICON_TRANS_MS);
+                    showTimers.push(reenable);
+                }, delay);
+                showTimers.push(id);
+            }
         });
     }
 
@@ -392,7 +404,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     desktopNavEl.addEventListener('focusin', function (e) {
         if (window.innerWidth < 1024) return;
-        if (desktopNavEl.contains(e.target)) expand();
+        // expand only when focus lands on Services link or its dropdown children
+        const focused = e.target;
+        if (servicesLink && (focused === servicesLink || servicesLink.contains(focused))) {
+            expand();
+            return;
+        }
+        if (dropdown && (focused === dropdown || dropdown.contains(focused))) {
+            expand();
+            return;
+        }
     });
 
     desktopNavEl.addEventListener('focusout', function () {

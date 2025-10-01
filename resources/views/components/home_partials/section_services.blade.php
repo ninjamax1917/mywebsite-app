@@ -18,7 +18,8 @@
                 class="group block bg-white rounded-none shadow-sm overflow-hidden border border-transparent hover:border-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 transition-colors">
                 <div class="card-inner animate-on-scroll" data-delay="240">
                     <img src="{{ asset('images/main_services/видео.jpg') }}" alt="Видеонаблюдение"
-                        class="w-full h-44 sm:h-56 object-cover animate-child" loading="lazy">
+                        class="w-full h-44 sm:h-56 object-cover animate-child" style="object-position:10% 35%;"
+                        loading="lazy">
                     <div class="p-6">
                         <h3 id="svc-1"
                             class="animate-child text-xl md:text-2xl lg:text-2xl font-semibold mb-2 text-gray-900 transition-transform transition-opacity duration-500 ease-out group-hover:text-blue-600">
@@ -35,7 +36,8 @@
                 class="group block bg-white rounded-none shadow-sm overflow-hidden border border-transparent hover:border-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 transition-colors">
                 <div class="card-inner animate-on-scroll" data-delay="320">
                     <img src="{{ asset('images/main_services/Пожарка.jpg') }}" alt="Противопожарная автоматика"
-                        class="w-full h-44 sm:h-56 object-cover animate-child" loading="lazy">
+                        class="w-full h-44 sm:h-56 object-cover animate-child" style="object-position:10% 65%;"
+                        loading="lazy">
                     <div class="p-6">
                         <h3 id="svc-2"
                             class="animate-child text-xl md:text-2xl lg:text-2xl font-semibold mb-2 text-gray-900 transition-transform transition-opacity duration-500 ease-out group-hover:text-blue-600">
@@ -83,7 +85,8 @@
                 class="group block bg-white rounded-none shadow-sm overflow-hidden border border-transparent hover:border-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 transition-colors">
                 <div class="card-inner animate-on-scroll" data-delay="560">
                     <img src="{{ asset('images/main_services/электрика.jpg') }}" alt="Электромонтаж"
-                        class="w-full h-44 sm:h-56 object-cover animate-child" loading="lazy">
+                        class="w-full h-44 sm:h-56 object-cover animate-child" style="object-position:10% 55%;"
+                        loading="lazy">
                     <div class="p-6">
                         <h3 id="svc-5"
                             class="animate-child text-xl md:text-2xl lg:text-2xl font-semibold mb-2 text-gray-900 transition-transform transition-opacity duration-500 ease-out group-hover:text-blue-600">
