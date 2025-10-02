@@ -5,11 +5,11 @@
             <div class="md:col-span-7 lg:col-span-6">
                 <h1 class="text-4xl sm:text-4xl md:text-7xl font-extrabold leading-tight text-gray-900 mb-4 hero-title">
                     <span
-                        class="block text-gray-900 transform -translate-y-6 opacity-0 transition-all duration-700 ease-out">Проектируем,</span>
+                        class="block text-gray-800 transform -translate-y-6 opacity-0 transition-all duration-700 ease-out">Проектируем,</span>
                     <span
-                        class="block text-gray-900 transform -translate-y-6 opacity-0 transition-all duration-700 ease-out">монтируем&nbsp;и</span>
+                        class="block text-gray-800 transform -translate-y-6 opacity-0 transition-all duration-700 ease-out">монтируем&nbsp;и</span>
                     <span
-                        class="block text-gray-900 transform -translate-y-6 opacity-0 transition-all duration-700 ease-out">сопровождаем</span>
+                        class="block text-gray-800 transform -translate-y-6 opacity-0 transition-all duration-700 ease-out">сопровождаем</span>
                     <span
                         class="block text-blue-600 transform -translate-y-6 opacity-0 transition-all duration-700 ease-out">инженерные</span>
                     <span

@@ -1,10 +1,10 @@
-<section class="mt-20 pt-12 lg:pt-5 border-t border-gray-300" aria-labelledby="services-heading">
+<section class="mt-20 pt-12 lg:pt-12 border-t border-gray-300" aria-labelledby="services-heading">
     <div class="max-w-[1440px] mx-auto px-0 md:px-0 lg:px-20">
         <div class="text-center mb-8">
             <h2 id="services-heading"
-                class="animate-on-scroll animate-from-left text-3xl md:text-4xl lg:text-4xl font-extrabold text-gray-900 mb-2 transition-transform transition-opacity duration-700 ease-out"
+                class="font-montserrat text-3xl md:text-4xl lg:text-4xl font-extrabold text-gray-800 mb-2 transition-transform transition-opacity duration-700 ease-out opacity-0 translate-x-8 will-change-transform will-change-opacity"
                 data-delay="0">
-                Наши услуги
+                НАШИ УСЛУГИ
             </h2>
             <p class="animate-on-scroll text-sm md:text-xl lg:text-base text-gray-600 max-w-2xl mx-auto transition-transform transition-opacity duration-700 ease-out"
                 data-delay="120">
@@ -12,7 +12,6 @@
                 клиентов.
             </p>
         </div>
-
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 services-grid pt-5">
             <a href="/services/videonablyudenie" role="article" aria-labelledby="svc-1"
                 class="group block bg-white rounded-none shadow-sm overflow-hidden border border-transparent hover:border-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 transition-colors">
