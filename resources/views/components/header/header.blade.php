@@ -7,8 +7,12 @@
         {{-- Меню для десктопа --}}
         <x-header.partials.desktop_menu />
 
+        <!--TODO: можно добилить позже-->
         {{-- Иконки справа (появляются на lg и выше) --}}
-        <x-header.partials.icons_info />
+        {{-- <x-header.partials.icons_info /> --}}
+
+        {{-- Телефон справа (появляется на lg и выше) --}}
+        <x-header.partials.telephone />
 
         {{-- Кнопка-бургер для мобильных и планшетов --}}
         <x-header.partials.burger_button />

@@ -100,8 +100,9 @@
             <a href="/services/electro-lab" role="article" aria-labelledby="svc-6"
                 class="group block bg-white rounded-none shadow-sm overflow-hidden border border-transparent hover:border-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 transition-colors">
                 <div class="card-inner animate-on-scroll" data-delay="640">
-                    <img src="{{ asset('images/main_services/лаборатория.jpg') }}" alt="Электролаборатория"
-                        class="w-full h-44 sm:h-56 object-cover animate-child" loading="lazy">
+                    <img src="{{ asset('images/main_services/Лаборатория.jpg') }}" alt="Электролаборатория"
+                        class="w-full h-44 sm:h-56 object-cover animate-child" style="object-position:10% 70%;"
+                        loading="lazy">
                     <div class="p-6">
                         <h3 id="svc-6"
                             class="animate-child text-xl md:text-2xl lg:text-2xl font-semibold mb-2 text-gray-900 transition-transform transition-opacity duration-500 ease-out group-hover:text-blue-600">

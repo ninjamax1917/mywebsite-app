@@ -30,11 +30,11 @@
     */
     .icon {
         transition: transform 220ms cubic-bezier(.2, .9, .2, 1),
-            color 420ms cubic-bezier(.2, .6, .2, 1),
-            stroke 420ms cubic-bezier(.2, .6, .2, 1);
+            color 520ms cubic-bezier(.2, .6, .2, 1),
+            stroke 520ms cubic-bezier(.2, .6, .2, 1);
         -webkit-transition: -webkit-transform 220ms cubic-bezier(.2, .9, .2, 1),
-            color 420ms cubic-bezier(.2, .6, .2, 1),
-            stroke 420ms cubic-bezier(.2, .6, .2, 1);
+            color 520ms cubic-bezier(.2, .6, .2, 1),
+            stroke 520ms cubic-bezier(.2, .6, .2, 1);
         transform-origin: center center;
         transform-box: fill-box;
         display: inline-block;
@@ -48,13 +48,43 @@
 
     /* Плавная смена цвета заголовков аккордеона — более длительная и мягкая */
     .accordion-title {
-        transition: color 420ms cubic-bezier(.2, .6, .2, 1);
-        -webkit-transition: color 420ms cubic-bezier(.2, .6, .2, 1);
+        transition: color 520ms cubic-bezier(.2, .6, .2, 1);
+        -webkit-transition: color 520ms cubic-bezier(.2, .6, .2, 1);
         will-change: color;
     }
 
     /* Дополнительная мелочь: если используется utility-класс tailwind для цвета,
        браузер всё равно плавно анимирует свойство color благодаря переходу выше. */
+
+    /* Плавное «гашение» соседних элементов при наведении на один
+       Управляется классами контейнера/элемента: has-hover на #work-accordion и is-hover на .accordion-btn */
+    #work-accordion.has-hover .accordion-btn:not(.is-hover):not([aria-expanded="true"]) .accordion-title,
+    #work-accordion.has-hover .accordion-btn:not(.is-hover):not([aria-expanded="true"]) .icon {
+        color: rgb(156 163 175);
+        /* text-gray-400 */
+        transition-delay: 40ms;
+        /* лёгкая задержка, чтобы переход между соседями был мягче */
+    }
+
+    #work-accordion.has-hover .accordion-btn.is-hover .accordion-title,
+    #work-accordion.has-hover .accordion-btn.is-hover .icon {
+        transition-delay: 0ms;
+        color: rgb(31 41 55);
+        /* text-gray-800 */
+    }
+
+    /* Подсветка активного (hover/focus) элемента целиком: при наведении — text-gray-800 */
+    #work-accordion .accordion-btn.is-hover {
+        color: rgb(31 41 55);
+        /* text-gray-800 */
+    }
+
+    /* При открытии: и кнопка, и заголовок, и иконка становятся синими */
+    #work-accordion .accordion-btn[aria-expanded="true"],
+    #work-accordion .accordion-btn[aria-expanded="true"] .accordion-title,
+    #work-accordion .accordion-btn[aria-expanded="true"] .icon {
+        color: rgb(37 99 235);
+    }
 </style>
 
 <script>
@@ -317,37 +347,40 @@
             });
         });
 
-        // При наведении / фокусе на один объект — остальные становятся text-gray-400 (плавно), и иконки тоже
-        function fadeOthers(activeBtn) {
-            buttons.forEach(b => {
-                if (b === activeBtn) return;
-                const t = b.querySelector('.accordion-title');
-                const ic = b.querySelector('.icon');
-                // удалить возможные конфликтующие цветовые классы и поставить серый
-                if (t) {
-                    t.classList.remove('text-gray-600', 'text-gray-800', 'text-blue-600');
-                    t.classList.add('text-gray-400');
-                }
-                if (ic) {
-                    ic.classList.remove('text-gray-600', 'text-gray-800', 'text-blue-600');
-                    ic.classList.add('text-gray-400');
-                }
+        // Плавное поведение наведения без массовых перерасчётов цветов в JS
+        const accContainer = document.getElementById('work-accordion');
+
+        function updateHoverContainerState() {
+            const any = buttons.some(b => b.classList.contains('is-hover'));
+            if (!accContainer) return;
+            if (any) accContainer.classList.add('has-hover');
+            else accContainer.classList.remove('has-hover');
+        }
+
+        if (accContainer) {
+            accContainer.addEventListener('pointerleave', () => {
+                buttons.forEach(b => b.classList.remove('is-hover'));
+                accContainer.classList.remove('has-hover');
             });
         }
 
-        function clearFade() {
-            buttons.forEach(b => {
-                const t = b.querySelector('.accordion-title');
-                const ic = b.querySelector('.icon');
-                if (t) t.classList.remove('text-gray-400');
-                if (ic) ic.classList.remove('text-gray-400');
-            });
-        }
         buttons.forEach(btn => {
-            btn.addEventListener('pointerenter', () => fadeOthers(btn));
-            btn.addEventListener('pointerleave', clearFade);
-            btn.addEventListener('focus', () => fadeOthers(btn));
-            btn.addEventListener('blur', clearFade);
+            btn.addEventListener('pointerenter', () => {
+                btn.classList.add('is-hover');
+                updateHoverContainerState();
+            });
+            btn.addEventListener('pointerleave', () => {
+                btn.classList.remove('is-hover');
+                updateHoverContainerState();
+            });
+            btn.addEventListener('focus', () => {
+                btn.classList.add('is-hover');
+                updateHoverContainerState();
+            });
+            btn.addEventListener('blur', () => {
+                btn.classList.remove('is-hover');
+                updateHoverContainerState();
+            });
         });
 
         // После инициализации аккордеона запускаем анимацию появления при скролле

@@ -2,8 +2,9 @@
     <div class="max-w-[1440px] mx-auto py-0">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center md:items-start">
             <!-- Текст -->
-            <div class="md:col-span-7 lg:col-span-6">
-                <h1 class="text-4xl sm:text-4xl md:text-7xl font-extrabold leading-tight text-gray-900 mb-4 hero-title">
+            <div class="lg:col-span-6">
+                <h1
+                    class="font-montserrat text-4xl sm:text-4xl md:text-7xl font-extrabold leading-tight text-gray-900 mb-4 hero-title">
                     <span
                         class="block text-gray-800 transform -translate-y-6 opacity-0 transition-all duration-700 ease-out">Проектируем,</span>
                     <span
@@ -44,7 +45,7 @@
                         <span>лет опыта</span>
                     </div>
                     <div class="flex items-center gap-3">
-                        <strong class="text-gray-900"><span class="js-counter" data-target="500"
+                        <strong class="text-gray-900"><span class="js-counter" data-target="700"
                                 data-duration="1400">0</span>+</strong>
                         <span>реализованных объектов</span>
                     </div>
@@ -52,9 +53,9 @@
             </div>
 
             <!-- Карусель фото справа -->
-            <div class="md:col-span-12 lg:col-span-5 flex justify-center lg:justify-end md:mt-6">
+            <div class="lg:col-span-6 flex justify-center lg:justify-center md:mt-6">
                 <div
-                    class="hero-card relative w-full max-w-md sm:max-w-lg md:max-w-full lg:max-w-full h-116 md:h-[44rem] lg:h-[44rem] rounded-lg overflow-hidden shadow-lg bg-gray-100 mx-auto transform translate-x-8 opacity-0 transition-all duration-700 ease-out">
+                    class="hero-card relative w-full max-w-md sm:max-w-lg md:max-w-full lg:max-w-full h-116 md:h-[44rem] lg:h-[44rem] rounded-lg overflow-hidden shadow-lg bg-gray-100 mx-auto opacity-0 transition-all duration-700 ease-out">
                     <div
                         class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none">
                     </div>
@@ -79,6 +80,12 @@
                         <img src="{{ asset('images/icons/hero_section_main/электрика.jpg') }}" alt="электрика"
                             class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0"
                             aria-hidden="true">
+                        <img src="{{ asset('images/icons/hero_section_main/Электрошкаф.jpg') }}" alt="Электрошкаф"
+                            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-100"
+                            aria-hidden="false">
+                        <img src="{{ asset('images/icons/hero_section_main/Точка доступа.jpg') }}" alt="Точка доступа"
+                            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-100"
+                            aria-hidden="false">
                     </div>
                 </div>
             </div>
