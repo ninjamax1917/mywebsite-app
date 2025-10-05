@@ -9,19 +9,19 @@
         </h2>
     </div>
 
-    <div class="relative z-10 pt-5 pb-16 max-w-[1440px] mx-auto px-4 md:px-12 lg:px-4">
+    <div class="relative z-10 pt-5 pb-16 container-custom">
         <div class="mb-15 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-14">
             <article
                 class="group opacity-0 translate-y-6 md:translate-y-8 scale-[.985] blur-[2px] will-change-transform will-change-opacity will-change-filter transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)]"
                 data-delay="0">
-                <a href="#"
+                <a href="{{ route('projects.show', 'galereya_vkusa') }}"
                     class="block relative overflow-hidden rounded-none shadow-sm h-[26rem] sm:h-[28rem] md:h-[32rem]">
                     <img src="{{ asset('images/our_projects/pekarnya/fasade_large.jpg') }}"
                         alt="Реконструкция офиса «Альфа»"
                         class="w-full h-full object-cover transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)] translate-y-2 opacity-0 filter grayscale saturate-0 brightness-95 group-[.revealed]:translate-y-0 group-[.revealed]:opacity-100 group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100"
                         loading="eager" fetchpriority="high" decoding="async" style="will-change: filter;">
                     <div
-                        class="absolute inset-x-0 bottom-3 flex flex-wrap gap-2 px-3 justify-start opacity-0 translate-y-2 pointer-events-none transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
+                        class="project-badges absolute inset-x-0 bottom-3 flex flex-wrap gap-2 px-3 justify-start opacity-0 translate-y-2 pointer-events-none transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
                         <span
                             class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm">Электромонтаж</span>
                         <span
@@ -48,20 +48,23 @@
             <article
                 class="group opacity-0 translate-y-6 md:translate-y-8 scale-[.985] blur-[2px] will-change-transform will-change-opacity will-change-filter transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)]"
                 data-delay="240">
-                <a href="#"
+                <a href="{{ route('projects.show', 'nesk') }}"
                     class="block relative overflow-hidden rounded-none shadow-sm h-[26rem] sm:h-[28rem] md:h-[32rem]">
                     <img src="{{ asset('images/our_projects/nesk/1.jpg') }}" alt="Реконструкция офиса «Альфа»"
                         class="w-full h-full object-cover transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)] translate-y-2 opacity-0 filter grayscale saturate-0 brightness-95 group-[.revealed]:translate-y-0 group-[.revealed]:opacity-100 group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100"
                         loading="eager" fetchpriority="high" decoding="async"
                         style="object-position:10% 10%; will-change: filter;">
                     <div
-                        class="absolute inset-x-0 bottom-3 flex flex-wrap gap-2 px-3 justify-start opacity-0 translate-y-2 pointer-events-none transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
+                        class="project-badges absolute inset-x-0 bottom-3 flex flex-wrap gap-2 px-3 justify-start opacity-0 translate-y-2 pointer-events-none transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
                         <span
-                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm">Монтаж</span>
+                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm">Электромонтаж</span>
                         <span
                             class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm delay-100">Проектирование</span>
                         <span
                             class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm delay-150">Сети</span>
+                        <span
+                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm delay-150">Охранно-пожарная
+                            сигнализация</span>
                     </div>
                 </a>
                 <div class="mt-4">
@@ -77,20 +80,23 @@
             <article
                 class="group opacity-0 translate-y-6 md:translate-y-8 scale-[.985] blur-[2px] will-change-transform will-change-opacity will-change-filter transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)]"
                 data-delay="240">
-                <a href="#"
+                <a href="{{ route('projects.show', 'dynasty') }}"
                     class="block relative overflow-hidden rounded-none shadow-sm h-[26rem] sm:h-[28rem] md:h-[32rem]">
                     <img src="{{ asset('/images/our_projects/caplya/1.jpg') }}" alt="Реконструкция офиса «Альфа»"
                         class="w-full h-full object-cover transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)] translate-y-2 opacity-0 filter grayscale saturate-0 brightness-95 group-[.revealed]:translate-y-0 group-[.revealed]:opacity-100 group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100"
                         loading="eager" fetchpriority="high" decoding="async"
                         style="object-position:10% 70%; will-change: filter;">
                     <div
-                        class="absolute inset-x-0 bottom-3 flex flex-wrap gap-2 px-3 justify-start opacity-0 translate-y-2 pointer-events-none transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
+                        class="project-badges absolute inset-x-0 bottom-3 flex flex-wrap gap-2 px-3 justify-start opacity-0 translate-y-2 pointer-events-none transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
                         <span
-                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm">Монтаж</span>
+                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm">Электромонтаж</span>
                         <span
                             class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm delay-100">Проектирование</span>
                         <span
                             class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm delay-150">Сети</span>
+                        <span
+                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm delay-150">Пожарная
+                            автоматика</span>
                     </div>
                 </a>
                 <div class="mt-4">
@@ -106,14 +112,14 @@
             <article
                 class="group opacity-0 translate-y-6 md:translate-y-8 scale-[.985] blur-[2px] will-change-transform will-change-opacity will-change-filter transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)]"
                 data-delay="240">
-                <a href="#"
+                <a href="{{ route('projects.show', 'kfh') }}"
                     class="block relative overflow-hidden rounded-none shadow-sm h-[26rem] sm:h-[28rem] md:h-[32rem]">
                     <img src="{{ asset('/images/our_projects/kfh_loza/1.jpg') }}" alt="Реконструкция офиса «Альфа»"
                         class="w-full h-full object-cover transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)] translate-y-2 opacity-0 filter grayscale saturate-0 brightness-95 group-[.revealed]:translate-y-0 group-[.revealed]:opacity-100 group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100"
                         loading="eager" fetchpriority="high" decoding="async"
                         style="object-position:10% 40%; will-change: filter;">
                     <div
-                        class="absolute inset-x-0 bottom-3 flex flex-wrap gap-2 px-3 justify-start opacity-0 translate-y-2 pointer-events-none transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
+                        class="project-badges absolute inset-x-0 bottom-3 flex flex-wrap gap-2 px-3 justify-start opacity-0 translate-y-2 pointer-events-none transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
                         <span
                             class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm">Монтаж</span>
                         <span
@@ -131,12 +137,94 @@
                     </p>
                 </div>
             </article>
+            {{-- СОШ №1 --}}
+            <article
+                class="group opacity-0 translate-y-6 md:translate-y-8 scale-[.985] blur-[2px] will-change-transform will-change-opacity will-change-filter transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)]"
+                data-delay="240">
+                <a href="{{ route('projects.show', 'sosh_1') }}"
+                    class="block relative overflow-hidden rounded-none shadow-sm h-[26rem] sm:h-[28rem] md:h-[32rem]">
+                    <img src="{{ asset('/images/our_projects/SOSH_1/СОШ_1.jpeg') }}" alt="Строительство СОШ №1"
+                        class="transform scale-[2.0] w-full h-full object-cover transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)] translate-y-2 opacity-0 filter grayscale saturate-0 brightness-95 group-[.revealed]:translate-y-0 group-[.revealed]:opacity-100 group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100"
+                        loading="eager" fetchpriority="high" decoding="async"
+                        style="object-position:100% 0%; will-change: filter;">
+                    <div
+                        class="project-badges absolute inset-x-0 bottom-3 flex flex-wrap gap-2 px-3 justify-start opacity-0 translate-y-2 pointer-events-none transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
+                        <span
+                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm">Электроснабжение</span>
+                        <span
+                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm delay-100">Внутренние
+                            электрические сети</span>
+                        <span
+                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm delay-150">Наружное
+                            и внутреннее освещение</span>
+                        <span
+                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm delay-150">Электротехнические
+                            испытания</span>
+                    </div>
+                </a>
+                <div class="mt-4">
+                    <h3
+                        class="text-lg md:text-2xl font-semibold text-gray-200 transition-colors duration-500 group-hover:text-blue-500">
+                        МАОУ СОШ № 1</h3>
+                    <p class="text-gray-200 mt-3 text-sm md:text-base">
+                        Муниципальное автономное общеобразовательно учреждение средняя общеобразовательная школа № 1
+                        имени А. Ф. Крамаренко.
+                    </p>
+                </div>
+            </article>
+
+            {{-- СШОР Водных видов спорта --}}
+            <article
+                class="group opacity-0 translate-y-6 md:translate-y-8 scale-[.985] blur-[2px] will-change-transform will-change-opacity will-change-filter transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)]"
+                data-delay="240">
+                <a href="{{ route('projects.show', 'shor_vvs') }}"
+                    class="block relative overflow-hidden rounded-none shadow-sm h-[26rem] sm:h-[28rem] md:h-[32rem]">
+                    <img src="{{ asset('/images/our_projects/shor_vodnyi/1.jpg') }}" alt="Строительство СОШ №1"
+                        class="w-full h-full object-cover transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)] translate-y-2 opacity-0 filter grayscale saturate-0 brightness-95 group-[.revealed]:translate-y-0 group-[.revealed]:opacity-100 group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100"
+                        loading="eager" fetchpriority="high" decoding="async"
+                        style="object-position:0% 30%; will-change: filter;">
+                    <div
+                        class="project-badges absolute inset-x-0 bottom-3 flex flex-wrap gap-2 px-3 justify-start opacity-0 translate-y-2 pointer-events-none transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
+                        <span
+                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm">Электроснабжение</span>
+
+                        <span
+                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm delay-150">Наружное
+                            и внутреннее освещение</span>
+
+                        <span
+                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm delay-150">Видеонаблюдение</span>
+                        <span
+                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm delay-150">Локальные
+                            сети</span>
+                        <span
+                            class="bg-black/60 text-white text-xs md:text-sm px-2.5 py-1 rounded-full border border-white/10 shadow-sm backdrop-blur-sm delay-150">Пожарная
+                            сигнализация</span>
+                    </div>
+
+                </a>
+                <div class="mt-4">
+                    <h3
+                        class="text-lg md:text-2xl font-semibold text-gray-200 transition-colors duration-500 group-hover:text-blue-500">
+                        ГБУ ДО КК "СШОР ВВС"</h3>
+                    <p class="text-gray-200 mt-3 text-sm md:text-base">
+                        Государственное бюджетное образовательное учреждение дополнительного образования
+                        "Специальная школа олимпийского резерва ВВС".
+                    </p>
+                </div>
+            </article>
         </div>
-        <!-- Добавлено: ссылка "Посмотреть больше проектов" -->
-        <div class="mt-8 text-center">
-            <a href="/projects"
-                class="inline-block px-6 py-3 rounded-md border border-white/10 text-sm md:text-base font-medium text-gray-200 bg-white/5 hover:bg-white/10 transition-colors duration-300">
-                Посмотреть больше проектов
+        {{-- Добавлено: ссылка "Посмотреть больше проектов" --}}
+        <div class="mt-8">
+            <a href="{{ route('projects.index') }}"
+                class="projects-more-link font-monserrat block w-full py-2 font-semibold text-start text-2xl md:text-3xl lg:text-4xl text-gray-200 border-b-2 border-white/70 rounded-none transition-colors duration-300 hover:text-blue-500 hover:border-blue-500 flex items-center justify-between">
+                <span>БОЛЬШЕ ПРОЕКТОВ</span>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="ml-4 flex-shrink-0 w-10 h-10 md:w-15 md:h-15 project-arrow" viewBox="0 0 512 512"
+                    aria-hidden="true" focusable="false">
+                    <path fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10"
+                        stroke-width="60" d="M268 112l144 144-144 144M392 256H100" />
+                </svg>
             </a>
         </div>
     </div>
@@ -148,7 +236,8 @@
         overflow-x: hidden;
     }
 
-    @supports (overflow: clip) {
+    /* Support check (escaped for Blade) */
+    @@supports (overflow: clip) {
         [data-projects-section] {
             overflow-x: clip;
         }
@@ -162,6 +251,64 @@
 
         [data-projects-section] article.group h3 {
             transition: color 500ms cubic-bezier(.2, .6, .2, 1);
+        }
+
+        /* Показываем бейджи активной карточки на тач-устройствах */
+        [data-projects-section] article.group.card-active .project-badges {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        [data-projects-section] article.group.card-active .project-badges span {
+            transition: opacity 400ms ease, transform 400ms ease;
+        }
+
+        /* Дополнительные отступы маркеров от краёв изображения на тач-устройствах */
+        [data-projects-section] .project-badges {
+            left: 0px;
+            /* небольшой внутренний отступ слева */
+            right: 0px;
+            /* небольшой внутренний отступ справа */
+            bottom: 20px;
+            /* чуть выше от нижнего края */
+        }
+
+        /* Плавное покадровое (stagger) появление бейджей */
+        [data-projects-section] .project-badges span {
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity .5s cubic-bezier(.2, .7, .2, 1), transform .5s cubic-bezier(.2, .7, .2, 1);
+        }
+
+        [data-projects-section] article.group.card-active .project-badges span {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Учитываем уже заданные delay-* классы Tailwind для каскада */
+    }
+
+    /* Кнопка "Больше проектов" */
+    /* Поворот и анимация иконки у ссылки "БОЛЬШЕ ПРОЕКТОВ" */
+    .project-arrow {
+        transform-origin: center;
+        transform-box: fill-box;
+        transform: rotate(45deg);
+        /* начальное положение 45° */
+        transition: transform 320ms cubic-bezier(.2, .7, .2, 1);
+        will-change: transform;
+    }
+
+    .projects-more-link:hover .project-arrow,
+    .projects-more-link:focus .project-arrow,
+    .projects-more-link:focus-visible .project-arrow {
+        transform: rotate(0deg);
+        /* при hover — повернуть на -45° относительно начального (45° → 0°) */
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .project-arrow {
+            transition: none;
         }
     }
 </style>
@@ -251,8 +398,13 @@
                 items.forEach((el) => {
                     const img = el.querySelector('img');
                     const title = el.querySelector('h3');
+                    const badges = el.querySelector('.project-badges');
+                    const isActive = el === bestEl;
+
+                    el.classList.toggle('card-active', isActive);
+
                     if (img) {
-                        if (el === bestEl) {
+                        if (isActive) {
                             img.classList.remove('grayscale', 'saturate-0', 'brightness-95');
                             img.classList.add('grayscale-0', 'saturate-100', 'brightness-100');
                         } else {
@@ -261,7 +413,7 @@
                         }
                     }
                     if (title) {
-                        if (el === bestEl) {
+                        if (isActive) {
                             title.classList.remove('text-gray-200');
                             title.classList.add('text-blue-500');
                         } else {
@@ -269,6 +421,7 @@
                             title.classList.remove('text-blue-500');
                         }
                     }
+                    // Больше не управляем opacity классами напрямую: анимация через CSS (card-active)
                 });
             };
 

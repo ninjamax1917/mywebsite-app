@@ -1,6 +1,5 @@
 <header id="site-header" class="bg-white border-b border-gray-500/50 relative">
-    <div id="header-inner"
-        class="max-w-[1440px] mx-auto px-4 md:px-12 lg:px-4 flex items-center justify-between h-18 relative">
+    <div id="header-inner" class="container-custom flex items-center justify-between h-18 relative">
         {{-- Логотип --}}
         <x-header.partials.logo />
 

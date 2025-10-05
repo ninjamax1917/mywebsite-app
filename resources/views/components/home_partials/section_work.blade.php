@@ -1,5 +1,5 @@
-<section class="mt-20 pt-12 lg:pt-12 border-t border-gray-300">
-    <div class="max-w-[1440px] mx-auto px-0 md:px-0 lg:px-20">
+<section class="mt-5 pt-10 lg:pt-10">
+    <div class="container-custom">
         <div class="text-center mb-8">
             <h2 id="services-heading"
                 class="font-montserrat text-3xl md:text-4xl lg:text-4xl font-extrabold text-gray-800 mb-2 transition-transform transition-opacity duration-700 ease-out opacity-0 translate-x-8 will-change-transform will-change-opacity"

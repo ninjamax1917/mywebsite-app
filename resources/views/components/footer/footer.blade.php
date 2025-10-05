@@ -1,5 +1,5 @@
 <div class="bg-[#232323] text-gray-300">
-    <div class="max-w-[1440px] mx-auto px-4 md:px-12 lg:px-4 py-6 md:py-12">
+    <div class="container-custom py-6 md:py-12">
         <!-- Мобильный: 2 колонки; на md+ — старый flex -->
         <div class="grid grid-cols-2 gap-6 md:flex md:flex-row md:items-start md:justify-between">
             <!-- Логотип + Описание (на мобилях: описание по всей ширине под логотипом) -->

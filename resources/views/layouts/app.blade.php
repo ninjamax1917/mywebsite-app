@@ -19,7 +19,7 @@
 <body class="min-h-screen flex flex-col overflow-x-hidden">
     @include('components.header.header')
 
-    <main class="flex-1 max-w-[1440px] mx-auto px-4 md:px-12 lg:px-4">
+    <main class="flex-1 w-full overflow-clip-x">
         @yield('content')
     </main>
     @include('components.footer.footer')

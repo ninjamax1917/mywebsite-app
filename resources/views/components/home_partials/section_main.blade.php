@@ -1,5 +1,5 @@
 <main>
-    <div class="max-w-[1440px] mx-auto py-0">
+    <div class="container-custom py-0">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center md:items-start">
             <!-- Текст -->
             <div class="lg:col-span-6">

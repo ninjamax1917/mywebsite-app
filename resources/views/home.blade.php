@@ -18,8 +18,9 @@
             class="cursor-pointer fixed z-50 bottom-6 right-6 md:bottom-8 md:right-8 inline-flex items-center justify-center
            w-[3.6rem] h-[3.6rem] md:w-[3.9rem] md:h-[3.9rem] bg-blue-500 text-white shadow-lg
            transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-600 hover:shadow-2xl focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="39" height="39" fill="currentColor"
-                aria-hidden="true" focusable="false">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50" fill="currentColor"
+                stroke="currentColor" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"
+                focusable="false">
                 <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z" />
             </svg>
         </button>

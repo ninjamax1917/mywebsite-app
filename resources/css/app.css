@@ -5,17 +5,115 @@
 @import './header.css';
 @import './home_page.css';
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
 
-@theme {
+/* Removed unsupported @source and @theme directives (caused build errors). */
+:root {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-html {
-    /* Резервирует место под скроллбар, предотвращая сдвиг при его появлении/скрытии */
-    scrollbar-gutter: stable;
+/* Custom responsive container to unify layout and avoid nested max-width + padding overflow */
+.container-custom {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    /* 16px */
+    padding-right: 1rem;
+    box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+
+    /* sm */
+    .container-custom {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+}
+
+@media (min-width: 768px) {
+
+    /* md */
+    .container-custom {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    /* lg */
+    .container-custom {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1280px) {
+
+    /* xl */
+    .container-custom {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+/* Utility to clamp content blocks preventing horizontal scroll when transformed elements are inside */
+.overflow-clip-x {
+    overflow-x: hidden;
+}
+
+@supports(overflow:clip) {
+    .overflow-clip-x {
+        overflow-x: clip;
+    }
+}
+
+/* Swiper adjustments: let slides shrink properly */
+.our-competencies-swiper,
+.our-competencies-swiper .swiper-wrapper {
+    max-width: 100%;
+}
+
+.our-competencies-swiper .swiper-slide {
+    width: auto;
+}
+
+/* Кнопки навигации Swiper */
+/* Поднимаем стрелки выше и фиксируем слева/справа */
+.our-competencies-swiper .swiper-button-prev,
+.our-competencies-swiper .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    /* уменьшите до ~30% чтобы поднять еще выше */
+    transform: translateY(-90%);
+    z-index: 30;
+    display: flex;
+    /* сохраняет центрирование содержимого */
+    align-items: center;
+    justify-content: center;
+    width: 5.5rem;
+    height: 5.5rem;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.our-competencies-swiper .swiper-button-prev {
+    left: 0.5rem;
+}
+
+.our-competencies-swiper .swiper-button-next {
+    right: 0.5rem;
+}
+
+/* Более точная настройка на больших экранах */
+@media (min-width: 1024px) {
+
+    .our-competencies-swiper .swiper-button-prev,
+    .our-competencies-swiper .swiper-button-next {
+        top: 40%;
+    }
 }
