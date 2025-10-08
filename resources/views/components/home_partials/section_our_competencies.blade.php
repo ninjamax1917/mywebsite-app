@@ -116,7 +116,7 @@
             position: absolute;
             top: 50%;
             /* Подняли стрелки на 10px: используем переменную с учётом будущих трансформаций */
-            --arrow-shift: calc(-50% - 10px);
+            --arrow-shift: calc(-90% - 10px);
             transform: translateY(var(--arrow-shift));
             width: 3.9rem;
             /* +15% */
@@ -319,7 +319,7 @@
                                 <a href="{{ $doc['href'] }}" target="_blank" rel="noopener" class="block group"
                                     aria-label="Открыть документ: {{ $doc['title'] }}">
                                     <div
-                                        class="license-card aspect-[3/4] w-full overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+                                        class="license-card aspect-[3/4] w-full overflow-hidden border border-gray-200 bg-white shadow-sm">
                                         <img src="{{ $doc['image'] }}" alt="{{ $doc['title'] }}" loading="lazy"
                                             class="h-full w-full object-cover" />
                                     </div>

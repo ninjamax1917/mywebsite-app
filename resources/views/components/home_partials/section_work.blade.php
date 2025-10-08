@@ -9,8 +9,8 @@
         </div>
 
         <div class="pt-6 max-w-full mx-auto">
-            <!-- Контейнер для динамического рендера -->
-            <div class="space-y-[10px]" id="work-accordion" role="tablist" aria-label="Этапы работ"></div>
+            <!-- Контейнер для динамического рендера (без рамки и скруглений, визуальные разрывы внутри wrapper) -->
+            <div id="work-accordion" class="w-full" role="tablist" aria-label="Этапы работ"></div>
         </div>
     </div>
 </section>
@@ -85,6 +85,23 @@
     #work-accordion .accordion-btn[aria-expanded="true"] .icon {
         color: rgb(37 99 235);
     }
+
+    /* Весь wrapper кликабелен (делегирует на внутреннюю кнопку) */
+    #work-accordion .accordion-wrapper {
+        cursor: pointer;
+        background: #ffffff;
+        position: relative;
+    }
+
+    /* Небольшой визуальный разрыв (gap) создаём псевдо-прозрачной вставкой через margin-bottom,
+       но вся зона остаётся кликабельной за счёт делегирования на кнопку */
+    #work-accordion .accordion-wrapper {
+        margin-bottom: 10px;
+    }
+
+    #work-accordion .accordion-wrapper:last-child {
+        margin-bottom: 0;
+    }
 </style>
 
 <script>
@@ -117,8 +134,9 @@
 
             const wrapper = document.createElement('div');
             wrapper.id = `wrapper-${id}`;
+            // wrapper без внешних отступов и внутреннего padding (вся «пустота» внутри padding кнопки)
             wrapper.className =
-                'font-open-sans text-lg p-2 border-t border-l border-gray-300 overflow-hidden transition-colors duration-300 transition-transform transition-opacity ease-out duration-500 opacity-0 translate-x-8 will-change-transform will-change-opacity';
+                'accordion-wrapper font-open-sans text-lg overflow-hidden transition-colors duration-300 transition-transform transition-opacity ease-out duration-500 opacity-0 translate-x-8 will-change-transform will-change-opacity border-t border-l border-gray-300';
             // ступенчатая задержка для плавного появления каждого элемента
             wrapper.dataset.delay = String(120 * idx);
 
@@ -126,8 +144,9 @@
 
             const btn = document.createElement('button');
             btn.type = 'button';
+            // Увеличенный вертикальный padding создает визуальный «воздух», оставаясь кликабельным
             btn.className =
-                'text-gray-800 font-montserrat text-lg lg:text-2xl accordion-btn w-full flex items-center justify-between px-4 py-3 text-left bg-white hover:bg-gray-50 focus:outline-none';
+                'text-gray-800 font-montserrat text-lg lg:text-2xl accordion-btn w-full flex items-center justify-between px-5 py-5 lg:py-6 text-left bg-white hover:bg-gray-50 focus:outline-none';
             btn.setAttribute('data-target', `panel-${id}`);
             btn.id = `tab-${id}`;
             btn.dataset.wrapper = wrapper.id;
@@ -165,6 +184,14 @@
             wrapper.appendChild(h3);
             wrapper.appendChild(panel);
             container.appendChild(wrapper);
+
+            // Делегируем клик по пустой зоне wrapper на кнопку, чтобы «пролётов» не было
+            wrapper.addEventListener('click', (e) => {
+                // Если клик пришел не из кнопки или ее потомков — инициируем клик по кнопке
+                if (!btn.contains(e.target)) {
+                    btn.click();
+                }
+            });
         });
     }
 
@@ -283,7 +310,7 @@
             const wrap = document.getElementById(btn.dataset.wrapper);
             if (wrap) {
                 wrap.classList.remove('border-blue-600');
-                wrap.classList.add('border-gray-300');
+                wrap.classList.add('border-gray-200');
             }
             const title = btn.querySelector('.accordion-title');
             const icon = btn.querySelector('.icon');
@@ -306,7 +333,7 @@
                             .wrapper);
                         if (openWrap) {
                             openWrap.classList.remove('border-blue-600');
-                            openWrap.classList.add('border-gray-300');
+                            openWrap.classList.add('border-gray-200');
                         }
                         const openTitle = currentlyOpenBtn.querySelector('.accordion-title');
                         const openIcon = currentlyOpenBtn.querySelector('.icon');
@@ -321,7 +348,7 @@
                         const currentWrapClose = document.getElementById(btn.dataset.wrapper);
                         if (currentWrapClose) {
                             currentWrapClose.classList.remove('border-blue-600');
-                            currentWrapClose.classList.add('border-gray-300');
+                            currentWrapClose.classList.add('border-gray-200');
                         }
                         const currentTitleClose = btn.querySelector('.accordion-title');
                         const currentIconClose = btn.querySelector('.icon');
@@ -335,7 +362,7 @@
                         if (panelToOpen) openPanel(panelToOpen);
                         const currentWrap = document.getElementById(btn.dataset.wrapper);
                         if (currentWrap) {
-                            currentWrap.classList.remove('border-gray-300');
+                            currentWrap.classList.remove('border-gray-200');
                             currentWrap.classList.add('border-blue-600');
                         }
                         const currentTitle = btn.querySelector('.accordion-title');

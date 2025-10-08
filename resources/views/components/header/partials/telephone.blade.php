@@ -27,7 +27,13 @@
     }
 </style>
 
-<div
-    class="header-telephone font-montserrat font-semibold bg-gray-800 text-gray-100 hidden lg:flex items-center space-x-9 ml-4 rounded-4xl overflow-hidden hover:rounded-none">
-    <a href="tel:+71234567890" aria-label="Позвонить" class="inline-block px-4 py-1.5">+7 (918) 254 71 47</a>
-</div>
+<a href="tel:+71234567890" aria-label="Позвонить"
+    class="header-telephone font-montserrat font-semibold bg-blue-600 text-gray-100 hidden lg:flex items-center gap-0 ml-4 rounded-4xl overflow-hidden hover:rounded-none px-3 py-1 cursor-pointer">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+        class="size-6" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round"
+            d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+    </svg>
+
+    <span class="inline-block px-2 py-0.5 text-lg leading-none">+7 (918) 254 71 47</span>
+</a>

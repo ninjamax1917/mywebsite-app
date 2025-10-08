@@ -14,7 +14,7 @@
             <article
                 class="group opacity-0 translate-y-6 md:translate-y-8 scale-[.985] blur-[2px] will-change-transform will-change-opacity will-change-filter transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)]"
                 data-delay="0">
-                <a href="{{ route('projects.show', 'galereya_vkusa') }}"
+                <a href="#"
                     class="block relative overflow-hidden rounded-none shadow-sm h-[26rem] sm:h-[28rem] md:h-[32rem]">
                     <img src="{{ asset('images/our_projects/pekarnya/fasade_large.jpg') }}"
                         alt="Реконструкция офиса «Альфа»"
@@ -48,7 +48,7 @@
             <article
                 class="group opacity-0 translate-y-6 md:translate-y-8 scale-[.985] blur-[2px] will-change-transform will-change-opacity will-change-filter transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)]"
                 data-delay="240">
-                <a href="{{ route('projects.show', 'nesk') }}"
+                <a href="#"
                     class="block relative overflow-hidden rounded-none shadow-sm h-[26rem] sm:h-[28rem] md:h-[32rem]">
                     <img src="{{ asset('images/our_projects/nesk/1.jpg') }}" alt="Реконструкция офиса «Альфа»"
                         class="w-full h-full object-cover transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)] translate-y-2 opacity-0 filter grayscale saturate-0 brightness-95 group-[.revealed]:translate-y-0 group-[.revealed]:opacity-100 group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100"
@@ -80,7 +80,7 @@
             <article
                 class="group opacity-0 translate-y-6 md:translate-y-8 scale-[.985] blur-[2px] will-change-transform will-change-opacity will-change-filter transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)]"
                 data-delay="240">
-                <a href="{{ route('projects.show', 'dynasty') }}"
+                <a href="#"
                     class="block relative overflow-hidden rounded-none shadow-sm h-[26rem] sm:h-[28rem] md:h-[32rem]">
                     <img src="{{ asset('/images/our_projects/caplya/1.jpg') }}" alt="Реконструкция офиса «Альфа»"
                         class="w-full h-full object-cover transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)] translate-y-2 opacity-0 filter grayscale saturate-0 brightness-95 group-[.revealed]:translate-y-0 group-[.revealed]:opacity-100 group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100"
@@ -112,7 +112,7 @@
             <article
                 class="group opacity-0 translate-y-6 md:translate-y-8 scale-[.985] blur-[2px] will-change-transform will-change-opacity will-change-filter transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)]"
                 data-delay="240">
-                <a href="{{ route('projects.show', 'kfh') }}"
+                <a href="#"
                     class="block relative overflow-hidden rounded-none shadow-sm h-[26rem] sm:h-[28rem] md:h-[32rem]">
                     <img src="{{ asset('/images/our_projects/kfh_loza/1.jpg') }}" alt="Реконструкция офиса «Альфа»"
                         class="w-full h-full object-cover transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)] translate-y-2 opacity-0 filter grayscale saturate-0 brightness-95 group-[.revealed]:translate-y-0 group-[.revealed]:opacity-100 group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100"
@@ -141,7 +141,7 @@
             <article
                 class="group opacity-0 translate-y-6 md:translate-y-8 scale-[.985] blur-[2px] will-change-transform will-change-opacity will-change-filter transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)]"
                 data-delay="240">
-                <a href="{{ route('projects.show', 'sosh_1') }}"
+                <a href="#"
                     class="block relative overflow-hidden rounded-none shadow-sm h-[26rem] sm:h-[28rem] md:h-[32rem]">
                     <img src="{{ asset('/images/our_projects/SOSH_1/СОШ_1.jpeg') }}" alt="Строительство СОШ №1"
                         class="transform scale-[2.0] w-full h-full object-cover transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)] translate-y-2 opacity-0 filter grayscale saturate-0 brightness-95 group-[.revealed]:translate-y-0 group-[.revealed]:opacity-100 group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100"
@@ -177,7 +177,7 @@
             <article
                 class="group opacity-0 translate-y-6 md:translate-y-8 scale-[.985] blur-[2px] will-change-transform will-change-opacity will-change-filter transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)]"
                 data-delay="240">
-                <a href="{{ route('projects.show', 'shor_vvs') }}"
+                <a href="#"
                     class="block relative overflow-hidden rounded-none shadow-sm h-[26rem] sm:h-[28rem] md:h-[32rem]">
                     <img src="{{ asset('/images/our_projects/shor_vodnyi/1.jpg') }}" alt="Строительство СОШ №1"
                         class="w-full h-full object-cover transition-[transform,opacity,filter] duration-[1000ms] md:duration-[1100ms] ease-[cubic-bezier(.2,.6,.2,1)] translate-y-2 opacity-0 filter grayscale saturate-0 brightness-95 group-[.revealed]:translate-y-0 group-[.revealed]:opacity-100 group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100"
@@ -216,7 +216,7 @@
         </div>
         {{-- Добавлено: ссылка "Посмотреть больше проектов" --}}
         <div class="mt-8">
-            <a href="{{ route('projects.index') }}"
+            <a href="#"
                 class="projects-more-link font-monserrat block w-full py-2 font-semibold text-start text-2xl md:text-3xl lg:text-4xl text-gray-200 border-b-2 border-white/70 rounded-none transition-colors duration-300 hover:text-blue-500 hover:border-blue-500 flex items-center justify-between">
                 <span>БОЛЬШЕ ПРОЕКТОВ</span>
                 <svg xmlns="http://www.w3.org/2000/svg"

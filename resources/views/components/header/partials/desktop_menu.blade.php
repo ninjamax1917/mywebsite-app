@@ -34,10 +34,7 @@
         role="menuitem">О нас</a>
     <a href="#"
         class="underline-anim-nav text-gray-800 transition-colors inline-flex items-center gap-2 group opacity-0 translate-y-4"
-        role="menuitem">Новости</a>
-    <a href="#"
-        class="underline-anim-nav text-gray-800 transition-colors inline-flex items-center gap-2 group opacity-0 translate-y-4"
-        role="menuitem">Камеры города</a>
+        role="menuitem">Проекты</a>
     <a href="#"
         class="underline-anim-nav text-gray-800 transition-colors inline-flex items-center gap-2 group opacity-0 translate-y-4"
         role="menuitem">Контакты</a>

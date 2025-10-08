@@ -9,6 +9,7 @@
                 <x-home_partials.section_our_competencies />
                 <x-home_partials.section_work />
                 <x-home_partials.section_our_projects />
+                <x-home_partials.section_connection />
                 <x-home_partials.section_map />
             </section>
         </div>
