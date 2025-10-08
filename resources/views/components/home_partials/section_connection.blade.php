@@ -1,12 +1,14 @@
 @php
     $contactShouldOpen = session('contact_success') || $errors->any() || old('name') || old('phone') || old('date');
 @endphp
-<section id="connection" class="bg-blue-500 pt-10 pb-6 sm:pt-16 sm:pb-8 lg:pt-16 lg:pb-0 scroll-animate">
+<section id="connection" class="bg-blue-500 pt-10 pb-6 sm:pt-16 sm:pb-8 lg:pt-16 lg:pb-16 scroll-animate">
     <div class="container-custom">
         <div id="contact-toggle-area" aria-controls="contact-collapsible"
-            class="relative w-full flex items-center md:items-start justify-center md:justify-center mb-2 md:mb-6 select-none pr-12 md:pr-0">
+            class="relative w-full flex items-center md:items-start justify-center md:justify-center mb-2 md:mb-6 select-none pr-0 md:pr-0">
             <h2 data-reveal data-reveal-delay="0"
-                class="text-center font-montserrat text-3xl md:text-4xl font-extrabold text-gray-200">СВЯЗАТЬСЯ С НАМИ
+                class="text-center font-montserrat text-3xl md:text-4xl font-extrabold text-gray-200">
+                <span class="block sm:inline">СВЯЗАТЬСЯ</span>
+                <span class="block sm:inline">С&nbsp;НАМИ</span>
             </h2>
             <div id="contact-collapse-toggle" type="button" aria-expanded="{{ $contactShouldOpen ? 'true' : 'false' }}"
                 aria-controls="contact-collapsible"
@@ -28,7 +30,7 @@
             </p>
 
             @if (session('contact_success'))
-                <div class="max-w-xl mx-auto mb-6 bg-green-600/90 text-white px-4 py-3 rounded" role="status">
+                <div class="max-w-xl mx-auto mb-6 bg-green-600/90 text-white px-4 py-3" role="status">
                     {{ session('contact_success') }}
                 </div>
             @endif
@@ -64,10 +66,10 @@
                 </div>
 
                 <div class="grid gap-2">
-                    <div class="date-wrapper relative">
+                    <div class="date-wrapper relative" data-has-value="{{ old('date') ? 'true' : 'false' }}">
                         <input id="contact-date" name="date" type="date" value="{{ old('date') }}"
-                            class="field-input w-full bg-transparent font-semibold text-white appearance-none border-b border-white/90 focus:border-white focus:outline-none transition px-0 py-2"
-                            aria-describedby="error-date">
+                            class="field-input date-input w-full bg-transparent font-semibold text-white appearance-none border-b border-white/90 focus:border-white focus:outline-none transition px-0 py-2"
+                            aria-describedby="error-date" autocomplete="off">
                         <span class="date-ph select-none">Дата</span>
                         <button type="button"
                             class="date-calendar-btn absolute inset-y-0 right-0 flex items-center justify-center px-0"
@@ -93,8 +95,13 @@
                             class="btn-spinner hidden ml-2 h-5 w-5 border-2 border-white/70 border-t-transparent rounded-full animate-spin"></span>
                     </button>
                 </div>
-                <p class="text-[11px] leading-snug text-gray-100/70 mt-1">Нажимая «Отправить», вы соглашаетесь с
-                    обработкой персональных данных.</p>
+                <p class="text-[13px] leading-snug text-gray-100/80 mt-1">
+                    Нажимая «Отправить», вы соглашаетесь с обработкой
+                    <a href="{{ url('/privacy') }}" target="_blank" rel="noopener noreferrer"
+                        class="underline hover:text-white">
+                        персональных данных
+                    </a>.
+                </p>
             </form>
         </div>
     </div>
@@ -216,7 +223,7 @@
                 s.removeAttribute('data-error-active');
             });
             form.querySelectorAll('.field-input').forEach(inp => {
-                inp.classList.remove('border-red-500', 'border-b-2');
+                inp.classList.remove('border-red-500', 'border-b-2', 'error');
                 inp.removeAttribute('aria-invalid');
             });
         }
@@ -228,7 +235,7 @@
                 span.textContent = '';
                 span.removeAttribute('data-error-active');
             }
-            input.classList.remove('border-red-500', 'border-b-2');
+            input.classList.remove('border-red-500', 'border-b-2', 'error');
             input.removeAttribute('aria-invalid');
         }
 
@@ -251,11 +258,19 @@
             #connection.scroll-animate { opacity:0; transform:translateX(80px); transition:opacity .8s ease, transform .8s cubic-bezier(.25,.8,.25,1); }
             #connection.scroll-animate.in-view { opacity:1; transform:translateX(0); }
             #connection .date-wrapper { position:relative; }
-            #connection .date-wrapper input[type="date"] { color-scheme: dark; position:relative; z-index:2; }
+            #connection .date-wrapper input[type="date"] { color-scheme: dark; position:relative; z-index:2; background:transparent; }
             #connection .date-wrapper input[type="date"]::-webkit-calendar-picker-indicator { opacity:0; display:none; }
-            #connection .date-wrapper .date-ph { position:absolute; left:0; top:50%; transform:translateY(-50%); font-weight:600; font-size:0.875rem; line-height:1; pointer-events:none; color:rgba(255,255,255,0.75); }
-            #connection .date-wrapper .date-dyn-mask { position:absolute; left:0; top:50%; transform:translateY(-50%); font-weight:600; font-size:0.875rem; line-height:1; letter-spacing:.4px; color:rgba(255,255,255,0.4); pointer-events:none; }
-            #connection .date-wrapper.mask-visible .date-ph { display:none; }
+            /* Стили кастомного плейсхолдера */
+            #connection .date-wrapper .date-ph { position:absolute; left:0; top:50%; transform:translateY(-50%); font-weight:600; font-size:0.875rem; line-height:1; pointer-events:none; color:rgba(255,255,255,0.75); transition:opacity .05s linear; }
+            #connection .date-wrapper.pre-activate .date-ph { opacity:0; }
+            /* Прячем нативный шаблон формата пока поле пустое и НЕ в фокусе */
+            /* Прячем нативный шаблон формата пока нет значения и пользователь еще не инициировал взаимодействие */
+            #connection .date-wrapper:not([data-has-value="true"]):not(.pre-activate):not(.focus) input[type="date"] { color:transparent; caret-color:transparent; }
+            #connection .date-wrapper:not([data-has-value="true"]):not(.pre-activate):not(.focus) input[type="date"]::-webkit-datetime-edit { color:transparent; }
+            /* Когда произошло нажатие (pre-activate), фокус или есть значение – показываем нативный текст */
+            #connection .date-wrapper.pre-activate .date-ph,
+            #connection .date-wrapper.focus .date-ph,
+            #connection .date-wrapper[data-has-value="true"] .date-ph { opacity:0; }
             #connection .date-wrapper .date-calendar-btn { z-index:3; background:transparent; color:#fff; }
             #connection .date-wrapper .date-calendar-btn:focus { outline: none; }
             #connection .date-wrapper .date-calendar-btn svg { pointer-events:none; }
@@ -359,37 +374,26 @@
             const wrap = dateInput.closest('.date-wrapper');
             if (!wrap) return;
             const calendarBtn = wrap.querySelector('.date-calendar-btn');
-            const MASK_TEXT = 'дд.мм.гггг';
-            let maskSpan = null;
 
-            function showMask() {
-                if (dateInput.value || maskSpan) return;
-                maskSpan = document.createElement('span');
-                maskSpan.className = 'date-dyn-mask select-none';
-                maskSpan.textContent = MASK_TEXT;
-                // вставляем после placeholder, чтобы порядок был предсказуем
-                const ph = wrap.querySelector('.date-ph');
-                if (ph && ph.nextSibling) wrap.insertBefore(maskSpan, ph.nextSibling);
-                else wrap.appendChild(maskSpan);
-                wrap.classList.add('mask-visible');
+            function updateState() {
+                wrap.setAttribute('data-has-value', dateInput.value ? 'true' : 'false');
             }
+            updateState();
 
-            function hideMask() {
-                if (maskSpan) {
-                    maskSpan.remove();
-                    maskSpan = null;
-                }
-                wrap.classList.remove('mask-visible');
-            }
+            // Моментальное скрытие плейсхолдера при нажатии (еще до фокуса)
+            dateInput.addEventListener('pointerdown', () => {
+                if (!dateInput.value) wrap.classList.add('pre-activate');
+            });
             dateInput.addEventListener('focus', () => {
-                if (!dateInput.value) showMask();
+                wrap.classList.add('focus');
             });
             dateInput.addEventListener('blur', () => {
-                if (!dateInput.value) hideMask();
+                wrap.classList.remove('focus');
+                if (!dateInput.value) wrap.classList.remove('pre-activate');
+                updateState();
             });
-            dateInput.addEventListener('input', () => {
-                if (dateInput.value) hideMask();
-            });
+            dateInput.addEventListener('input', updateState);
+            dateInput.addEventListener('change', updateState);
             if (calendarBtn) {
                 calendarBtn.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -464,7 +468,7 @@
                     }
                 } else {
                     if (msgWrap) msgWrap.innerHTML =
-                        `<div class=\"bg-green-600/90 text-white px-4 py-3 rounded text-sm font-medium\">${data.message || 'Заявка отправлена.'}</div>`;
+                        `<div class=\"bg-green-600/90 text-white px-4 py-3 text-sm font-medium\">${data.message || 'Заявка отправлена.'}</div>`;
                     form.reset();
                     if (phoneInput) phoneInput.value = '';
                     clearFieldErrors();

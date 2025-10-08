@@ -311,6 +311,65 @@
             transition: none;
         }
     }
+
+    .project-arrow {
+        transform-origin: center;
+        transform-box: fill-box;
+        transform: rotate(45deg);
+        /* начальное положение 45° */
+        transition: transform 320ms cubic-bezier(.2, .7, .2, 1);
+        will-change: transform;
+    }
+
+    .projects-more-link:hover .project-arrow,
+    .projects-more-link:focus .project-arrow,
+    .projects-more-link:focus-visible .project-arrow {
+        transform: rotate(0deg);
+        /* при hover — повернуть на -45° относительно начального (45° → 0°) */
+    }
+
+    /* ПЕРЕКРАСКА БОРДЕРА */
+    /* Animated bottom color wipe (left -> right) for "БОЛЬШЕ ПРОЕКТОВ" */
+    .projects-more-link {
+        position: relative;
+        z-index: 1;
+        overflow: visible;
+    }
+
+    .projects-more-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        /* совпадает с border-b-2 */
+        background: #3b82f6;
+        /* text-blue-500 */
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 780ms cubic-bezier(.2, .8, .2, 1);
+        pointer-events: none;
+        z-index: 0;
+        /* под контент, над фоном */
+        border-radius: 0;
+    }
+
+    .projects-more-link:hover::after,
+    .projects-more-link:focus::after,
+    .projects-more-link:focus-visible::after {
+        transform: scaleX(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .project-arrow {
+            transition: none;
+        }
+
+        .projects-more-link::after {
+            transition: none;
+        }
+    }
 </style>
 
 <script>

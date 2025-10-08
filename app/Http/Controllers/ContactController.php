@@ -74,10 +74,10 @@ class ContactController extends Controller
         if ($request->expectsJson()) {
             return response()->json([
                 'status' => 'ok',
-                'message' => 'Заявка отправлена. Мы свяжемся с вами.',
+                'message' => 'Заявка отправлена. Мы свяжемся с вами в ближайшее время.',
             ]);
         }
 
-        return back()->with('contact_success', 'Заявка отправлена. Мы свяжемся с вами.');
+        return back()->with('contact_success', 'Заявка отправлена. Мы свяжемся с вами в ближайшее время.');
     }
 }

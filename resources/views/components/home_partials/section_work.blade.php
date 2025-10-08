@@ -89,7 +89,7 @@
     /* Весь wrapper кликабелен (делегирует на внутреннюю кнопку) */
     #work-accordion .accordion-wrapper {
         cursor: pointer;
-        background: #ffffff;
+        background: #FAFAFA;
         position: relative;
     }
 
@@ -146,7 +146,7 @@
             btn.type = 'button';
             // Увеличенный вертикальный padding создает визуальный «воздух», оставаясь кликабельным
             btn.className =
-                'text-gray-800 font-montserrat text-lg lg:text-2xl accordion-btn w-full flex items-center justify-between px-5 py-5 lg:py-6 text-left bg-white hover:bg-gray-50 focus:outline-none';
+                'text-gray-800 font-montserrat text-lg lg:text-2xl accordion-btn w-full flex items-center justify-between px-5 py-5 lg:py-6 text-left bg-[#FAFAFA] hover:bg-gray-50 focus:outline-none';
             btn.setAttribute('data-target', `panel-${id}`);
             btn.id = `tab-${id}`;
             btn.dataset.wrapper = wrapper.id;
