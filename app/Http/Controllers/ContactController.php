@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactRequest as ContactRequestMail;
 
 class ContactController extends Controller
 {
@@ -70,6 +72,25 @@ class ContactController extends Controller
         $validated['phone_normalized'] = $digits; // 7XXXXXXXXXX
 
         Log::info('Contact request', $validated);
+
+        // Отправка письма самому себе
+        try {
+            $to = env('CONTACT_TO') ?: env('MAIL_FROM_ADDRESS');
+            if ($to) {
+                Mail::to($to)->send(new ContactRequestMail($validated));
+                Log::info('Contact email sent to ' . $to);
+            } else {
+                Log::warning('CONTACT_TO and MAIL_FROM_ADDRESS are empty, email not sent');
+            }
+        } catch (\Throwable $e) {
+            Log::error('Failed to send contact email: ' . $e->getMessage(), ['exception' => $e]);
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Не удалось отправить письмо. Попробуйте позже.'
+                ], 500);
+            }
+        }
 
         if ($request->expectsJson()) {
             return response()->json([

@@ -40,12 +40,12 @@
                 <div
                     class="mt-8 flex flex-wrap gap-6 text-sm text-gray-600 hero-sub transform translate-y-4 opacity-0 transition-all duration-700 ease-out">
                     <div class="flex items-center gap-3">
-                        <strong class="text-gray-900"><span class="js-counter" data-target="20"
+                        <strong class="text-gray-900"><span class="js-counter" data-target="14"
                                 data-duration="1400">0</span>+</strong>
                         <span>лет опыта</span>
                     </div>
                     <div class="flex items-center gap-3">
-                        <strong class="text-gray-900"><span class="js-counter" data-target="700"
+                        <strong class="text-gray-900"><span class="js-counter" data-target="500"
                                 data-duration="1400">0</span>+</strong>
                         <span>реализованных объектов</span>
                     </div>
