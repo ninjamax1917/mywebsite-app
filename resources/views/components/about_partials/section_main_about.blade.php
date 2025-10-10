@@ -4,11 +4,8 @@
         <!-- Intro -->
         <x-about_partials.section_intro_about />
 
-        <!-- Directions -->
-        {{-- <x-about_partials.section_card_about /> --}}
-
         <!-- Advantages -->
-        {{-- <x-about_partials.section_advantages /> --}}
+        <x-about_partials.section_advantages />
 
         <!-- Why us -->
         {{-- <x-about_partials.section_why_us /> --}}

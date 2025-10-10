@@ -23,9 +23,9 @@
                 </h2>
 
                 <p
-                    class="text-sm text-gray-600 mb-6 leading-relaxed hero-sub transform translate-y-4 opacity-0 transition-all duration-700 ease-out">
+                    class="text-lg text-gray-600 mb-6 leading-relaxed hero-sub transform translate-y-4 opacity-0 transition-all duration-700 ease-out">
                     Производство работ по проектированию, монтажу и обслуживанию электроснабжения, электрооборудования,
-                    проивопожарной автоматики, охранных систем, видеонаблюдения, СКУД, домофонии, вентиляции и
+                    противопожарной автоматики, охранных систем, видеонаблюдения, СКУД, домофонии, вентиляции и
                     кондиционирования.
                 </p>
 

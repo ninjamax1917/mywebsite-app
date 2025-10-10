@@ -7,3 +7,4 @@ import "./main_hero_home";
 import "./section_services";
 import "./map";
 import "./competencies_slider";
+import "./advantages_slider";

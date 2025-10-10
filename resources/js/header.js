@@ -434,4 +434,44 @@ document.addEventListener('DOMContentLoaded', function () {
         servicesLink.setAttribute('aria-expanded', 'false');
         showHeaderIcons(false);
     });
+
+    // --- Управление направлением underline-анимации (сворачивание вправо) ---
+    (function manageUnderlineDirection() {
+        const underlineEls = Array.from(document.querySelectorAll('.underline-anim-nav, #services-link'));
+        underlineEls.forEach(el => {
+            // На вход курсора/фокус — показать линию слева-направо
+            const onEnter = () => {
+                el.classList.add('hovering');
+                el.classList.remove('shrink-right');
+            };
+            // На выход — сжать к правому краю
+            const onLeave = () => {
+                el.classList.remove('hovering');
+                // force reflow, чтобы браузер применил новый transform-origin до трансформации
+                void el.offsetWidth;
+                el.classList.add('shrink-right');
+                // снять класс после завершения transition transform у псевдоэлемента —
+                // слушаем у родителя, так как псевдоэлемент событий не шлёт
+                let timeoutId = null;
+                const cleanup = () => {
+                    el.classList.remove('shrink-right');
+                    el.removeEventListener('transitionend', onTransitionEnd, true);
+                    if (timeoutId) clearTimeout(timeoutId);
+                };
+                const onTransitionEnd = (e) => {
+                    if (e.propertyName === 'transform') {
+                        cleanup();
+                    }
+                };
+                el.addEventListener('transitionend', onTransitionEnd, true);
+                // Фолбек-таймер, если transitionend не прилетит (0.6s > .45s)
+                timeoutId = setTimeout(cleanup, 600);
+            };
+
+            el.addEventListener('pointerenter', onEnter);
+            el.addEventListener('focus', onEnter);
+            el.addEventListener('pointerleave', onLeave);
+            el.addEventListener('blur', onLeave);
+        });
+    })();
 });

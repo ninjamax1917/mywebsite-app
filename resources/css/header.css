@@ -1,4 +1,4 @@
-/* Общие стили underline-анимации */
+/* Общие стили underline-анимации (анимация направлением через transform) */
 .underline-anim-nav {
     position: relative;
     display: inline-block;
@@ -10,13 +10,26 @@
     left: 0;
     bottom: -1px;
     height: 1px;
-    width: 0;
+    width: 100%;
     background: currentColor;
-    transition: width .45s ease;
+    /* Вместо width анимируем transform, чтобы можно было менять направление сжатия */
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform .45s ease;
 }
 
-.underline-anim-nav:hover::after {
-    width: 100%;
+/* Показываем линию слева-направо при наведении/фокусе */
+.underline-anim-nav:hover::after,
+.underline-anim-nav:focus::after,
+.underline-anim-nav.hovering::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+/* При уходе курсора сжимаем к правому краю */
+.underline-anim-nav.shrink-right::after {
+    transform-origin: right;
+    transform: scaleX(0);
 }
 
 /* Desktop nav links */
@@ -91,8 +104,9 @@
 }
 
 /* Подсветка underline для services-link при expanded */
-#site-header.expanded .desktop-nav a#services-link::after {
-    width: 100% !important;
+#site-header.expanded .desktop-nav a#services-link .underline-target::after {
+    transform-origin: left;
+    transform: scaleX(1) !important;
 }
 
 #site-header.expanded .desktop-nav a#services-link {
@@ -176,13 +190,25 @@
     left: 0;
     bottom: -6px;
     height: 1px;
-    width: 0;
+    width: 100%;
     background: currentColor;
-    transition: width .45s ease;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform .45s ease;
 }
 
 #services-link:hover .underline-target::after,
 #services-link:focus .underline-target::after,
-#site-header.expanded .desktop-nav a#services-link .underline-target::after {
-    width: 100%;
+#site-header.expanded .desktop-nav a#services-link .underline-target::after,
+#services-link.hovering .underline-target::after {
+    transform-origin: left;
+    transform: scaleX(1);
 }
+
+/* Уход курсора — сворачиваем "вправо" специально для services-link */
+#services-link.shrink-right .underline-target::after {
+    transform-origin: right;
+    transform: scaleX(0);
+}
+
+/* дубликат базового класса оставлен выше; этот блок был повторён — удалён во избежание конфликтов */
